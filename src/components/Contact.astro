@@ -1,0 +1,176 @@
+---
+const email = 'varga.yanosh.05@gmail.com';
+const channels = [
+  { id: 'tg',  label: 'TELEGRAM', handle: '@ynshvrh',   href: 'https://t.me/ynshvrh' },
+  { id: 'em',  label: 'EMAIL',    handle: email,        href: `mailto:${email}` },
+  { id: 'li',  label: 'LINKEDIN', handle: '/in/ynshvrh', href: 'https://www.linkedin.com/in/ynshvrh' },
+  { id: 'gh',  label: 'GITHUB',   handle: '@ynshvrh',   href: 'https://github.com/ynshvrh' },
+];
+---
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-label">
+      <span class="idx">03</span>
+      <span class="slash">//</span>
+      <span class="name">CONTACT.SH</span>
+      <span class="rule"></span>
+    </div>
+
+    <div class="contact-wrap frame">
+      <span class="c-tl"></span><span class="c-br"></span>
+
+      <header class="ch-head">
+        <h2 class="section-title">
+          Open a <span class="gradient-text">channel</span>.
+        </h2>
+        <p class="ch-prompt mono">
+          &gt; awaiting connection<span class="cursor"></span>
+        </p>
+      </header>
+
+      <a class="primary-line mono" href={`mailto:${email}`}>
+        <span class="pl-prefix">mail ──</span>
+        <span class="pl-value">{email}</span>
+        <span class="pl-arrow">→</span>
+      </a>
+
+      <ul class="channels">
+        {channels.map((c, i) => (
+          <li>
+            <a class="ch-row" href={c.href} target="_blank" rel="noopener noreferrer">
+              <span class="ch-num">{String(i).padStart(2, '0')}</span>
+              <span class="ch-label">{c.label}</span>
+              <span class="ch-line"></span>
+              <span class="ch-handle">{c.handle}</span>
+              <span class="ch-arrow">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <footer class="ch-foot mono">
+        <span>UPLINK · SECURE</span>
+        <span class="vbar">|</span>
+        <span>RESPONSE ETA ≤ 24H</span>
+      </footer>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-wrap {
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ch-head {
+    margin-bottom: 2rem;
+  }
+  .ch-prompt {
+    color: var(--cyan-soft);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .primary-line {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--cyan);
+    background: linear-gradient(110deg, rgba(0, 240, 255, 0.08), rgba(181, 88, 255, 0.06));
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .primary-line:hover {
+    border-color: var(--purple);
+    color: var(--text);
+    background: linear-gradient(110deg, rgba(0, 240, 255, 0.05), rgba(181, 88, 255, 0.15));
+  }
+  .pl-prefix { color: var(--purple); }
+  .pl-value { flex: 1; color: var(--cyan-soft); }
+  .pl-arrow { color: var(--cyan); }
+
+  .channels {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .channels li {
+    border-top: 1px dashed var(--line);
+  }
+  .channels li:last-child {
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .ch-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0.25rem;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    transition: color 0.15s ease, padding 0.15s ease, background 0.15s ease;
+  }
+  .ch-row:hover {
+    color: var(--text);
+    padding-left: 0.75rem;
+    background: linear-gradient(90deg, rgba(0, 240, 255, 0.05), transparent);
+  }
+  .ch-num {
+    color: var(--purple);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+  .ch-label {
+    color: var(--cyan);
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    min-width: 90px;
+  }
+  .ch-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--line), transparent);
+    min-width: 20px;
+  }
+  .ch-handle {
+    color: var(--text-dim);
+  }
+  .ch-row:hover .ch-handle { color: var(--cyan-soft); }
+  .ch-arrow {
+    color: var(--purple);
+    transition: transform 0.15s ease;
+  }
+  .ch-row:hover .ch-arrow { transform: translate(3px, -3px); color: var(--cyan); }
+
+  .ch-foot {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.85rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+  .vbar { color: var(--purple); }
+
+  @media (max-width: 640px) {
+    .contact-wrap { padding: 1.5rem 1.25rem; }
+    .ch-label { min-width: 70px; font-size: 0.78rem; }
+    .primary-line {
+      flex-wrap: wrap;
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+    }
+  }
+</style>

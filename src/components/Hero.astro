@@ -1,0 +1,292 @@
+---
+---
+
+<section id="top" class="hero section">
+  <div class="container hero-grid">
+
+    <aside class="rail" aria-hidden="true">
+      <span class="rail-tick">SYS</span>
+      <span class="rail-tick">/01</span>
+      <span class="rail-tick">/02</span>
+      <span class="rail-tick">/03</span>
+      <span class="rail-line"></span>
+      <span class="rail-tick rotate">YNSHVRH ▒ DEV ▒ 2026</span>
+    </aside>
+
+    <div class="hero-main frame">
+      <span class="c-tl"></span><span class="c-br"></span>
+      <div class="scan-overlay"></div>
+
+      <div class="meta-top">
+        <span class="chip is-active"><span class="dot"></span> SYS:ONLINE</span>
+        <span class="meta-rule"></span>
+        <span class="meta-coord">LAT 50.45° / LON 30.52°</span>
+        <span class="meta-sep">·</span>
+        <span class="meta-coord">KYIV / UA</span>
+      </div>
+
+      <p class="kicker">// IDENTITY.SYS</p>
+
+      <h1 class="title">
+        <span class="hi">Hi, I am</span><br />
+        <span class="name-swap" aria-label="Yanosh, also known as Janos">
+          <span class="name name-a">Yanosh</span>
+          <span class="name name-b" aria-hidden="true">Janos</span>
+        </span>
+        <span class="slash">/</span>
+      </h1>
+
+      <p class="subtitle mono">
+        &gt; Backend-oriented full-stack developer<span class="cursor"></span>
+      </p>
+
+      <p class="lead">
+        Building with <span class="hl-c">TypeScript</span> and <span class="hl-p">C#</span>.
+        Interested in systems programming, currently exploring
+        <span class="hl-c">Go</span> and <span class="hl-p">Rust</span>.
+      </p>
+
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">
+          <span>./view_work</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">./open_channel</a>
+      </div>
+
+      <div class="stack-row">
+        <span class="stack-label">STACK ──</span>
+        <span class="stack-item"><i>01</i> TypeScript</span>
+        <span class="stack-item"><i>02</i> C#/.NET</span>
+        <span class="stack-item"><i>03</i> Node.js</span>
+        <span class="stack-item"><i>04</i> Go</span>
+        <span class="stack-item"><i>05</i> Rust</span>
+      </div>
+
+      <div class="meta-bot">
+        <span>BUILD v0.1.0</span>
+        <span class="meta-sep">·</span>
+        <span>UPLINK STABLE</span>
+        <span class="meta-sep">·</span>
+        <span class="b-blink">REC ●</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 4.5rem;
+    padding-bottom: 5rem;
+    position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  /* Left rail */
+  .rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding-top: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--text-mute);
+    text-transform: uppercase;
+  }
+  .rail-tick { display: block; }
+  .rail-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--line), transparent);
+    margin: 0.25rem 0;
+  }
+  .rail-tick.rotate {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--cyan);
+    letter-spacing: 0.4em;
+    margin-top: 0.5rem;
+  }
+
+  /* Main frame */
+  .hero-main {
+    padding: 2.25rem;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 0%, rgba(0, 240, 255, 0.08), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(181, 88, 255, 0.10), transparent 60%),
+      var(--panel);
+  }
+
+  .meta-top, .meta-bot {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-mute);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .meta-top { margin-bottom: 2rem; }
+  .meta-bot {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--line);
+  }
+  .meta-sep { color: var(--purple); opacity: 0.6; }
+  .meta-coord { color: var(--text-dim); }
+  .meta-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--line) 0%, transparent 100%);
+    min-width: 30px;
+  }
+  .chip .dot {
+    width: 7px; height: 7px;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  .b-blink {
+    color: var(--magenta);
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--purple);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+
+  .title {
+    font-family: var(--mono);
+    font-size: clamp(2.4rem, 8vw, 5rem);
+    line-height: 0.95;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+  .hi {
+    display: block;
+    color: var(--text-mute);
+    font-size: 0.35em;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.55rem;
+    font-weight: 500;
+  }
+  .slash {
+    color: var(--purple);
+    margin-left: 0.1em;
+  }
+
+  .name-swap {
+    position: relative;
+    display: inline-block;
+    min-width: 5.5ch;
+  }
+  .name-swap .name {
+    display: inline-block;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 40px rgba(0, 240, 255, 0.25);
+  }
+  .name-swap .name-b {
+    position: absolute;
+    left: 0; top: 0;
+    white-space: nowrap;
+  }
+  .name-a { animation: name-a 8s infinite cubic-bezier(0.65, 0, 0.35, 1); }
+  .name-b { animation: name-b 8s infinite cubic-bezier(0.65, 0, 0.35, 1); }
+  @keyframes name-a {
+    0%, 45%   { opacity: 1; transform: translateY(0); filter: blur(0); }
+    50%, 95%  { opacity: 0; transform: translateY(-10px); filter: blur(6px); }
+    100%      { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  @keyframes name-b {
+    0%, 45%   { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+    50%, 95%  { opacity: 1; transform: translateY(0); filter: blur(0); }
+    100%      { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--cyan-soft);
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .lead {
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    color: var(--text-dim);
+    margin-bottom: 1.75rem;
+    max-width: 560px;
+  }
+  .hl-c { color: var(--cyan); font-weight: 600; }
+  .hl-p { color: var(--purple-soft); font-weight: 600; }
+
+  .cta-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  .stack-label {
+    color: var(--purple);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+  .stack-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .stack-item i {
+    font-style: normal;
+    color: var(--text-mute);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+  }
+
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .rail { display: none; }
+    .hero-main { padding: 1.5rem 1.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .name-a, .name-b, .b-blink, .chip .dot, .cursor-inline { animation: none; }
+    .name-b { display: none; }
+  }
+</style>
