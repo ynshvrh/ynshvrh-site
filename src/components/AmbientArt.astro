@@ -1,0 +1,148 @@
+---
+// Ambient illustrations that swap with the theme:
+//   light → small frog on a lily pad, bottom-right
+//   dark  → distant orca silhouette drifting across the deep
+// Both share the same fixed container so they never push layout around.
+---
+
+<div class="ambient" aria-hidden="true">
+  <!-- Light theme: lily pond friend -->
+  <svg
+    class="art-frog"
+    viewBox="0 0 200 160"
+    width="180"
+    height="144"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Water shadow -->
+    <ellipse cx="100" cy="138" rx="78" ry="6" fill="rgba(29, 58, 74, 0.10)" />
+
+    <!-- Lily pad -->
+    <ellipse cx="100" cy="125" rx="78" ry="20" fill="#5e9b4d" />
+    <ellipse cx="100" cy="120" rx="75" ry="16" fill="#7fbb6c" />
+    <!-- Notch -->
+    <path d="M100 104 L116 120 L100 136 Z" fill="#cee5f0" />
+
+    <!-- Lotus -->
+    <g transform="translate(158, 116)">
+      <ellipse cx="0" cy="2" rx="9" ry="4" fill="#5e9b4d" opacity="0.5" />
+      <ellipse cx="-3" cy="-2" rx="4" ry="6" fill="#f7c2cf" />
+      <ellipse cx="3"  cy="-2" rx="4" ry="6" fill="#ef9bb0" />
+      <ellipse cx="0"  cy="-4" rx="3" ry="5" fill="#fbd9e1" />
+    </g>
+
+    <!-- Frog body -->
+    <ellipse cx="80" cy="100" rx="33" ry="22" fill="#7fb56e" />
+    <ellipse cx="80" cy="108" rx="23" ry="11" fill="#e8f3df" opacity="0.95" />
+
+    <!-- Front legs -->
+    <ellipse cx="56" cy="115" rx="7" ry="3" fill="#7fb56e" />
+    <ellipse cx="104" cy="115" rx="7" ry="3" fill="#7fb56e" />
+
+    <!-- Eye bumps -->
+    <circle cx="64" cy="78" r="13" fill="#7fb56e" />
+    <circle cx="92" cy="78" r="13" fill="#7fb56e" />
+    <!-- Eye whites -->
+    <circle cx="64" cy="78" r="9" fill="#fefdf6" />
+    <circle cx="92" cy="78" r="9" fill="#fefdf6" />
+    <!-- Pupils -->
+    <circle cx="64" cy="80" r="5" fill="#1d3a4a" />
+    <circle cx="92" cy="80" r="5" fill="#1d3a4a" />
+    <!-- Eye highlights -->
+    <circle cx="66.5" cy="77.5" r="1.5" fill="#fefdf6" />
+    <circle cx="94.5" cy="77.5" r="1.5" fill="#fefdf6" />
+
+    <!-- Smile -->
+    <path d="M71 97 Q80 103 89 97" stroke="#1d3a4a" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <!-- Cheek blush -->
+    <ellipse cx="58" cy="95" rx="3" ry="1.5" fill="#f7c2cf" opacity="0.7" />
+    <ellipse cx="102" cy="95" rx="3" ry="1.5" fill="#f7c2cf" opacity="0.7" />
+  </svg>
+
+  <!-- Dark theme: orca silhouette drifting in the deep -->
+  <svg
+    class="art-orca"
+    viewBox="0 0 400 200"
+    width="320"
+    height="160"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Light shafts from above -->
+    <defs>
+      <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#d8e7ec" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="#d8e7ec" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <g opacity="0.25">
+      <path d="M110 0 L88 200 L132 200 Z"  fill="url(#ray)" />
+      <path d="M260 0 L243 200 L277 200 Z" fill="url(#ray)" />
+    </g>
+
+    <!-- Orca silhouette -->
+    <g transform="translate(200, 115)" fill="#0e2533">
+      <!-- Tail flukes -->
+      <path d="M-100 0 Q-115 -10 -125 -16 L-105 0 L-125 16 Q-115 10 -100 0 Z" />
+      <!-- Body -->
+      <ellipse cx="0" cy="0" rx="82" ry="20" />
+      <!-- Belly highlight -->
+      <ellipse cx="-8" cy="9" rx="48" ry="6" fill="#1d3e54" opacity="0.7" />
+      <!-- Eye patch -->
+      <ellipse cx="56" cy="-4" rx="8" ry="3.5" fill="#3a5c6d" opacity="0.55" />
+      <!-- Dorsal fin -->
+      <path d="M-12 -18 L4 -40 L18 -18 Z" />
+      <!-- Pectoral fin -->
+      <path d="M10 6 L-12 22 L20 14 Z" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .art-frog,
+  .art-orca {
+    position: absolute;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Frog: bottom-right corner, gentle hover-bob */
+  .art-frog {
+    right: 2.5rem;
+    bottom: 1.5rem;
+    opacity: 0;
+    animation: bob 6s ease-in-out infinite;
+  }
+  :root[data-theme="light"] .art-frog { opacity: 1; }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+
+  /* Orca: drifts left ↔ right across the lower half, very slow */
+  .art-orca {
+    left: 0;
+    bottom: 12vh;
+    opacity: 0;
+    animation: cruise 60s linear infinite;
+    filter: blur(0.4px);
+  }
+  :root[data-theme="dark"] .art-orca { opacity: 0.55; }
+
+  @keyframes cruise {
+    0%   { transform: translateX(-30%) scale(0.9); }
+    50%  { transform: translateX(70vw)  scale(1); }
+    100% { transform: translateX(-30%) scale(0.9); }
+  }
+
+  /* Mobile: shrink both, tuck out of the way */
+  @media (max-width: 640px) {
+    .art-frog { right: 1rem; bottom: 1rem; transform-origin: bottom right; }
+    .art-frog { width: 130px; height: 104px; }
+    .art-orca { width: 220px; height: 110px; bottom: 8vh; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .art-frog { animation: none; }
+    .art-orca { animation: none; transform: translateX(40vw); }
+  }
+</style>

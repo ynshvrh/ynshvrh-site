@@ -1,176 +1,122 @@
 ---
 const email = 'varga.yanosh.05@gmail.com';
 const channels = [
-  { id: 'tg',  label: 'TELEGRAM', handle: '@ynshvrh',   href: 'https://t.me/ynshvrh' },
-  { id: 'em',  label: 'EMAIL',    handle: email,        href: `mailto:${email}` },
-  { id: 'li',  label: 'LINKEDIN', handle: '/in/ynshvrh', href: 'https://www.linkedin.com/in/ynshvrh' },
-  { id: 'gh',  label: 'GITHUB',   handle: '@ynshvrh',   href: 'https://github.com/ynshvrh' },
+  { label: 'Telegram', handle: '@ynshvrh',    href: 'https://t.me/ynshvrh' },
+  { label: 'Email',    handle: email,         href: `mailto:${email}` },
+  { label: 'LinkedIn', handle: '/in/ynshvrh', href: 'https://www.linkedin.com/in/ynshvrh' },
+  { label: 'GitHub',   handle: '@ynshvrh',    href: 'https://github.com/ynshvrh' },
 ];
 ---
 
 <section id="contact" class="section">
   <div class="container">
-    <div class="section-label">
-      <span class="idx">03</span>
-      <span class="slash">//</span>
-      <span class="name">CONTACT.SH</span>
-      <span class="rule"></span>
-    </div>
+    <h2 class="section-title">Get in touch</h2>
+    <p class="lead">
+      Working on something interesting? Drop a line.
+    </p>
 
-    <div class="contact-wrap frame">
-      <span class="c-tl"></span><span class="c-br"></span>
-
-      <header class="ch-head">
-        <h2 class="section-title">
-          Open a <span class="gradient-text">channel</span>.
-        </h2>
-        <p class="ch-prompt mono">
-          &gt; awaiting connection<span class="cursor"></span>
-        </p>
-      </header>
-
-      <a class="primary-line mono" href={`mailto:${email}`}>
-        <span class="pl-prefix">mail ──</span>
+    <div class="contact-card">
+      <a class="primary-line" href={`mailto:${email}`}>
+        <span class="pl-label">Email</span>
         <span class="pl-value">{email}</span>
-        <span class="pl-arrow">→</span>
+        <span class="pl-arrow" aria-hidden="true">→</span>
       </a>
 
       <ul class="channels">
-        {channels.map((c, i) => (
+        {channels.map((c) => (
           <li>
             <a class="ch-row" href={c.href} target="_blank" rel="noopener noreferrer">
-              <span class="ch-num">{String(i).padStart(2, '0')}</span>
               <span class="ch-label">{c.label}</span>
-              <span class="ch-line"></span>
               <span class="ch-handle">{c.handle}</span>
-              <span class="ch-arrow">↗</span>
+              <span class="ch-arrow" aria-hidden="true">↗</span>
             </a>
           </li>
         ))}
       </ul>
-
-      <footer class="ch-foot mono">
-        <span>UPLINK · SECURE</span>
-        <span class="vbar">|</span>
-        <span>RESPONSE ETA ≤ 24H</span>
-      </footer>
     </div>
   </div>
 </section>
 
 <style>
-  .contact-wrap {
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
+  .lead {
+    color: var(--text-dim);
+    margin: 0 0 1.75rem;
+    font-size: 1.05rem;
   }
 
-  .ch-head {
-    margin-bottom: 2rem;
-  }
-  .ch-prompt {
-    color: var(--cyan-soft);
-    font-size: 0.9rem;
-    margin: 0;
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.75rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: var(--card-shadow);
   }
 
   .primary-line {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     padding: 1rem 1.25rem;
-    border: 1px solid var(--cyan);
-    background: linear-gradient(110deg, rgba(181, 234, 234, 0.08), rgba(79, 183, 179, 0.06));
-    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    background: var(--accent-tint);
     color: var(--text);
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-    transition: border-color 0.15s ease, background 0.15s ease;
+    margin-bottom: 1.25rem;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
   .primary-line:hover {
-    border-color: var(--purple);
-    color: var(--text);
-    background: linear-gradient(110deg, rgba(181, 234, 234, 0.05), rgba(79, 183, 179, 0.15));
+    background: var(--accent-tint-strong);
+    transform: translateY(-1px);
   }
-  .pl-prefix { color: var(--purple); }
-  .pl-value { flex: 1; color: var(--cyan-soft); }
-  .pl-arrow { color: var(--cyan); }
+  .pl-label {
+    font-size: 0.78rem;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .pl-value { flex: 1; color: var(--text); font-weight: 500; }
+  .pl-arrow { color: var(--accent); font-weight: 600; }
 
   .channels {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
   }
-  .channels li {
-    border-top: 1px dashed var(--line);
-  }
-  .channels li:last-child {
-    border-bottom: 1px dashed var(--line);
-  }
+  .channels li + li { border-top: 1px solid var(--line); }
 
   .ch-row {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
     gap: 1rem;
-    padding: 0.85rem 0.25rem;
+    align-items: center;
+    padding: 0.85rem 0.5rem;
     color: var(--text-dim);
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    transition: color 0.15s ease, padding 0.15s ease, background 0.15s ease;
+    transition: color 0.2s ease, padding-left 0.2s ease, background 0.2s ease;
+    border-radius: 8px;
   }
   .ch-row:hover {
     color: var(--text);
-    padding-left: 0.75rem;
-    background: linear-gradient(90deg, rgba(181, 234, 234, 0.05), transparent);
-  }
-  .ch-num {
-    color: var(--purple);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
+    padding-left: 0.85rem;
+    background: var(--surface-hover);
   }
   .ch-label {
-    color: var(--cyan);
-    letter-spacing: 0.18em;
-    font-weight: 600;
-    min-width: 90px;
+    color: var(--text);
+    font-weight: 500;
   }
-  .ch-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--line), transparent);
-    min-width: 20px;
-  }
-  .ch-handle {
-    color: var(--text-dim);
-  }
-  .ch-row:hover .ch-handle { color: var(--cyan-soft); }
+  .ch-handle { font-size: 0.92rem; }
   .ch-arrow {
-    color: var(--purple);
-    transition: transform 0.15s ease;
+    color: var(--accent);
+    transition: transform 0.2s ease;
   }
-  .ch-row:hover .ch-arrow { transform: translate(3px, -3px); color: var(--cyan); }
+  .ch-row:hover .ch-arrow { transform: translate(3px, -3px); }
 
-  .ch-foot {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 0.85rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-  }
-  .vbar { color: var(--purple); }
-
-  @media (max-width: 640px) {
-    .contact-wrap { padding: 1.5rem 1.25rem; }
-    .ch-label { min-width: 70px; font-size: 0.78rem; }
-    .primary-line {
-      flex-wrap: wrap;
-      padding: 0.85rem 1rem;
-      font-size: 0.85rem;
+  @media (max-width: 560px) {
+    .ch-row {
+      grid-template-columns: 100px 1fr auto;
+      gap: 0.5rem;
+      font-size: 0.88rem;
     }
+    .primary-line { flex-wrap: wrap; }
   }
 </style>

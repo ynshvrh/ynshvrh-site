@@ -1,65 +1,42 @@
 ---
 const dossier = [
-  { k: 'name',     v: 'Yanosh / Janos' },
-  { k: 'role',     v: 'Full-stack engineer · backend-leaning' },
-  { k: 'current',  v: 'Vue · Go' },
-  { k: 'learning', v: 'Rust' },
-  { k: 'also',     v: 'TypeScript / Node · C# / .NET' },
-  { k: 'location', v: 'Kyiv / Ukraine' },
-  { k: 'status',   v: 'open for collab' },
+  { k: 'Role',     v: 'Full-stack engineer · backend-leaning' },
+  { k: 'Current',  v: 'Vue · Go' },
+  { k: 'Learning', v: 'Rust' },
+  { k: 'Also',     v: 'TypeScript / Node · C# / .NET' },
+  { k: 'Location', v: 'Kyiv / Ukraine' },
+  { k: 'Status',   v: 'Open for collab' },
 ];
 ---
 
 <section id="about" class="section">
   <div class="container">
-    <div class="section-label">
-      <span class="idx">01</span>
-      <span class="slash">//</span>
-      <span class="name">ABOUT.MD</span>
-      <span class="rule"></span>
-    </div>
+    <h2 class="section-title">About</h2>
 
     <div class="about-grid">
       <div class="about-copy">
-        <h2 class="section-title">
-          Backend-oriented<br />
-          <span class="gradient-text">full-stack</span> developer.
-        </h2>
         <p>
-          Currently working with <span class="hl-c">Vue</span> on the
-          front end and <span class="hl-p">Go</span> on the server,
-          actively learning <span class="hl-p">Rust</span>. I like clean APIs,
-          predictable systems, and codebases that prize clarity over cleverness.
+          Currently working with <strong>Vue</strong> on the front end and
+          <strong>Go</strong> on the server, actively learning
+          <strong>Rust</strong>. I like clean APIs, predictable systems, and
+          codebases that prize clarity over cleverness.
         </p>
         <p>
-          Comfortable picking up <span class="hl-c">TypeScript / Node</span>
-          and <span class="hl-p">C# / .NET</span> when a project calls for them.
+          Comfortable picking up <strong>TypeScript / Node</strong> and
+          <strong>C# / .NET</strong> when a project calls for them.
           Based in Kyiv, Ukraine.
-        </p>
-        <p class="signature mono">
-          &gt; cat /etc/yanosh<span class="cursor"></span>
         </p>
       </div>
 
-      <aside class="dossier frame">
-        <span class="c-tl"></span><span class="c-br"></span>
-        <header class="dossier-head">
-          <span class="chip is-purple">ID 0x59 — RECORD</span>
-          <span class="dossier-id">#001/2026</span>
-        </header>
-        <dl class="kv">
+      <aside class="dossier">
+        <dl>
           {dossier.map((row) => (
             <>
-              <dt class="k">{row.k}</dt>
-              <dd class="v">{row.v}</dd>
+              <dt>{row.k}</dt>
+              <dd>{row.v}</dd>
             </>
           ))}
         </dl>
-        <footer class="dossier-foot mono">
-          <span>SIG · ynshvrh</span>
-          <span class="vbar">|</span>
-          <span>VER 1.0</span>
-        </footer>
       </aside>
     </div>
   </div>
@@ -68,55 +45,50 @@ const dossier = [
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: 1.25fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: 2.5rem;
     align-items: start;
   }
 
   .about-copy p {
-    max-width: 56ch;
+    max-width: 58ch;
+    color: var(--text-dim);
+    line-height: 1.75;
+    margin: 0 0 1rem;
   }
-
-  .hl-c { color: var(--cyan); font-weight: 600; }
-  .hl-p { color: var(--purple-soft); font-weight: 600; }
-
-  .signature {
-    color: var(--cyan-soft);
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
+  .about-copy strong {
+    color: var(--accent);
+    font-weight: 600;
   }
 
   .dossier {
-    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: var(--card-shadow);
   }
-  .dossier-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.85rem;
-    border-bottom: 1px dashed var(--line);
+  .dossier dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.7rem;
   }
-  .dossier-id {
-    font-family: var(--mono);
-    font-size: 0.7rem;
+  .dossier dt {
     color: var(--text-mute);
-    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    padding-top: 0.1rem;
   }
-  dl.kv { margin: 0; }
-  dl.kv dd { margin: 0; }
-  .dossier-foot {
-    margin-top: 1.25rem;
-    padding-top: 0.85rem;
-    border-top: 1px dashed var(--line);
-    display: flex;
-    gap: 0.85rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    color: var(--text-mute);
-    text-transform: uppercase;
+  .dossier dd {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.92rem;
   }
-  .vbar { color: var(--purple); }
 
   @media (max-width: 820px) {
     .about-grid { grid-template-columns: 1fr; gap: 1.75rem; }

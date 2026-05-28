@@ -1,0 +1,109 @@
+---
+// Theme toggle:
+//   - icon shows the *destination* theme (frog if you'd switch to light,
+//     orca tail if you'd switch to dark) so it reads as a verb
+//   - clicking drops a "water droplet" at the cursor location which expands
+//     into a full-viewport radial ripple — the actual data-theme flip is
+//     masked under the ripple so the user never sees a hard cut
+---
+
+<button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
+  <!-- Frog (shown in dark mode → click to go light) -->
+  <svg class="icon icon-frog" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+    <ellipse cx="12" cy="15.5" rx="7.5" ry="5.5" fill="currentColor"/>
+    <circle cx="9" cy="9.5" r="2.6" fill="currentColor"/>
+    <circle cx="15" cy="9.5" r="2.6" fill="currentColor"/>
+    <circle cx="9" cy="9.5" r="1.3" fill="var(--bg)"/>
+    <circle cx="15" cy="9.5" r="1.3" fill="var(--bg)"/>
+    <path d="M9 15c1 .8 2 1.2 3 1.2s2-.4 3-1.2" stroke="var(--bg)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <!-- Orca (shown in light mode → click to go dark) -->
+  <svg class="icon icon-orca" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+    <ellipse cx="12" cy="13" rx="8" ry="3.2" fill="currentColor"/>
+    <path d="M3 13l-2-1 1.5 2-2 1 2 .5L3 17z" fill="currentColor"/>
+    <path d="M11 10l1.5-4 2 4z" fill="currentColor"/>
+    <ellipse cx="6" cy="13.5" rx="3" ry="1.4" fill="var(--bg)" opacity="0.6"/>
+    <circle cx="17" cy="12.5" r="0.7" fill="var(--bg)"/>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease,
+                color 0.2s ease, transform 0.2s ease;
+  }
+  .theme-toggle:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent-soft);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .icon {
+    grid-area: 1 / 1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  /* Show the icon for the destination theme (verb-style toggle) */
+  :root[data-theme="dark"]  .icon-orca { opacity: 0; transform: scale(0.6); pointer-events: none; }
+  :root[data-theme="light"] .icon-frog { opacity: 0; transform: scale(0.6); pointer-events: none; }
+</style>
+
+<script>
+  const KEY = 'ynshvrh.theme';
+  type Theme = 'light' | 'dark';
+
+  function current(): Theme {
+    return (document.documentElement.dataset.theme as Theme) || 'dark';
+  }
+  function apply(theme: Theme) {
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem(KEY, theme); } catch (_) {}
+  }
+
+  // Colours roughly match each theme's deep bg, so the ripple feels like the
+  // destination water flooding in from the click point.
+  const BG: Record<Theme, string> = {
+    light: '#cee5f0',
+    dark:  '#020a14',
+  };
+
+  function ripple(x: number, y: number, next: Theme) {
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { apply(next); return; }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'theme-ripple';
+    const drop = document.createElement('div');
+    drop.className = 'drop';
+    drop.style.left = `${x}px`;
+    drop.style.top = `${y}px`;
+    drop.style.setProperty('--ripple-color', BG[next]);
+    overlay.appendChild(drop);
+    document.body.appendChild(overlay);
+
+    // Flip theme just after the ripple visually covers most of the viewport.
+    window.setTimeout(() => apply(next), 380);
+    window.setTimeout(() => overlay.remove(), 1000);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX || (r.left + r.width / 2));
+      const y = (e.clientY || (r.top + r.height / 2));
+      const next: Theme = current() === 'dark' ? 'light' : 'dark';
+      ripple(x, y, next);
+    });
+  });
+</script>
