@@ -48,7 +48,13 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <!-- Ambient particles: bubbles rise in the dark theme, lotus petals
+         fall in the light. Visibility toggles via [data-theme] in CSS. -->
     <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="petals" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
       <span></span><span></span><span></span><span></span>
     </div>
