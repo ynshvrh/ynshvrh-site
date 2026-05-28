@@ -1,38 +1,38 @@
 /*
- * Cosmic palette — palettepoint.com / Dragonlord/Galaxy set.
- *   #060439  COSMIC VOID      — deep background
- *   #080B79  MAJOR TOM        — secondary surface
- *   #1016A5  DARK GALAXY      — accent / chip bg
- *   #5A47C4  DRAGONLORD       — primary accent (buttons, links, glows)
- *   #A9A5F3  SHY MOMENT       — light lavender (text-dim, hover, gradient cap)
+ * Ocean palette — calm depths.
+ *   #021526  ABYSS         — deep background, near-black blue
+ *   #03346E  MIDNIGHT BLUE — secondary surface (elevated)
+ *   #1B6B93  TIDE          — accent / chip bg (mid-water blue)
+ *   #4FB7B3  SHALLOW       — primary accent (buttons, links, glows; teal)
+ *   #B5EAEA  SEAFOAM       — light foam (text-dim, hover, gradient cap)
  *
  * Legacy variable names (--cyan / --purple / --crimson) are kept so existing
- * components don't break; the values now map to the cosmic palette instead.
- *   --cyan       → SHY MOMENT  (was electric cyan; now the "cool/light" accent)
- *   --purple     → DRAGONLORD  (the primary purple accent)
- *   --magenta    → DARK GALAXY (deeper accent)
- *   --crimson    → DRAGONLORD  (palette has no warm tone; reuse purple)
+ * components don't break; values map to the ocean palette instead.
+ *   --cyan       → SEAFOAM   (the "cool/light" accent)
+ *   --purple     → SHALLOW   (the primary teal accent)
+ *   --magenta    → TIDE      (deeper mid-blue accent)
+ *   --crimson    → SHALLOW   (no warm tone; reuse teal)
  */
 :root {
-  --bg: #060439;          /* cosmic void */
-  --bg-elev: #080b79;     /* major tom */
-  --panel: #080b3f;       /* between void and major tom */
-  --surface: rgba(169, 165, 243, 0.03);
-  --line: rgba(90, 71, 196, 0.28);
-  --line-strong: rgba(169, 165, 243, 0.55);
-  --text: #e8e6ff;
-  --text-dim: #a9a5f3;      /* shy moment */
-  --text-mute: #6f6bb0;
-  --cyan: #a9a5f3;          /* shy moment */
-  --cyan-soft: #c7c4f7;
-  --purple: #5a47c4;        /* dragonlord */
-  --purple-soft: #8273e0;
-  --magenta: #1016a5;       /* dark galaxy */
-  --crimson: #5a47c4;       /* dragonlord (no warm in this palette) */
-  --crimson-soft: #a9a5f3;
-  --grad: linear-gradient(110deg, #1016a5 0%, var(--purple) 50%, var(--cyan) 100%);
-  --grad-soft: linear-gradient(110deg, rgba(169, 165, 243, 0.7), rgba(90, 71, 196, 0.7));
-  --glow: 0 0 24px rgba(169, 165, 243, 0.35), 0 0 64px rgba(90, 71, 196, 0.25);
+  --bg: #021526;          /* abyss */
+  --bg-elev: #03346e;     /* midnight blue */
+  --panel: #052642;       /* between abyss and midnight */
+  --surface: rgba(181, 234, 234, 0.03);
+  --line: rgba(79, 183, 179, 0.28);
+  --line-strong: rgba(181, 234, 234, 0.55);
+  --text: #e8f4f5;
+  --text-dim: #b5eaea;       /* seafoam */
+  --text-mute: #6a8d96;
+  --cyan: #b5eaea;           /* seafoam */
+  --cyan-soft: #d8f3f2;
+  --purple: #4fb7b3;         /* shallow (teal) */
+  --purple-soft: #8fd1cd;
+  --magenta: #1b6b93;        /* tide */
+  --crimson: #4fb7b3;        /* shallow (no warm in this palette) */
+  --crimson-soft: #b5eaea;
+  --grad: linear-gradient(110deg, #1b6b93 0%, var(--purple) 50%, var(--cyan) 100%);
+  --grad-soft: linear-gradient(110deg, rgba(181, 234, 234, 0.7), rgba(79, 183, 179, 0.7));
+  --glow: 0 0 24px rgba(181, 234, 234, 0.35), 0 0 64px rgba(79, 183, 179, 0.25);
   --radius: 2px;
   --maxw: 1180px;
   --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
@@ -67,10 +67,10 @@ body {
   overflow-x: hidden;
   background-color: var(--bg);
   background-image:
-    linear-gradient(rgba(169, 165, 243, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(90, 71, 196, 0.04) 1px, transparent 1px),
-    radial-gradient(ellipse 50% 40% at 90% 0%, rgba(169, 165, 243, 0.10), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 30%, rgba(90, 71, 196, 0.12), transparent 60%);
+    linear-gradient(rgba(181, 234, 234, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 183, 179, 0.04) 1px, transparent 1px),
+    radial-gradient(ellipse 50% 40% at 90% 0%, rgba(181, 234, 234, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 30%, rgba(79, 183, 179, 0.12), transparent 60%);
   background-size: 56px 56px, 56px 56px, auto, auto;
   background-attachment: fixed, fixed, fixed, fixed;
 }
@@ -162,8 +162,8 @@ p {
 }
 .section-label .idx {
   color: var(--cyan);
-  background: rgba(169, 165, 243, 0.08);
-  border: 1px solid rgba(169, 165, 243, 0.35);
+  background: rgba(181, 234, 234, 0.08);
+  border: 1px solid rgba(181, 234, 234, 0.35);
   padding: 0.1rem 0.45rem;
 }
 .section-label .slash { color: var(--purple); }
@@ -212,15 +212,15 @@ p {
 .btn::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
 .btn-primary {
-  background: linear-gradient(110deg, rgba(169, 165, 243, 0.15), rgba(90, 71, 196, 0.18));
+  background: linear-gradient(110deg, rgba(181, 234, 234, 0.15), rgba(79, 183, 179, 0.18));
   color: var(--cyan);
   border-color: var(--crimson);
-  box-shadow: 0 0 0 1px rgba(90, 71, 196, 0.18), 0 0 24px -8px var(--crimson);
+  box-shadow: 0 0 0 1px rgba(79, 183, 179, 0.18), 0 0 24px -8px var(--crimson);
 }
 .btn-primary:hover {
   color: var(--crimson-soft);
   border-color: var(--crimson-soft);
-  box-shadow: 0 0 0 1px rgba(169, 165, 243, 0.45), 0 0 28px -6px var(--crimson);
+  box-shadow: 0 0 0 1px rgba(181, 234, 234, 0.45), 0 0 28px -6px var(--crimson);
   transform: translateY(-1px);
 }
 .btn-ghost {
@@ -293,17 +293,17 @@ p {
   border: 1px solid var(--line);
   padding: 0.18rem 0.5rem;
   border-radius: var(--radius);
-  background: rgba(169, 165, 243, 0.04);
+  background: rgba(181, 234, 234, 0.04);
 }
 .chip.is-active {
   color: var(--cyan);
-  border-color: rgba(169, 165, 243, 0.5);
-  background: rgba(169, 165, 243, 0.08);
+  border-color: rgba(181, 234, 234, 0.5);
+  background: rgba(181, 234, 234, 0.08);
 }
 .chip.is-purple {
   color: var(--purple-soft);
-  border-color: rgba(90, 71, 196, 0.5);
-  background: rgba(90, 71, 196, 0.08);
+  border-color: rgba(79, 183, 179, 0.5);
+  background: rgba(79, 183, 179, 0.08);
 }
 
 .cursor::after {
@@ -311,7 +311,7 @@ p {
   display: inline-block;
   margin-left: 2px;
   color: var(--crimson);
-  text-shadow: 0 0 10px rgba(90, 71, 196, 0.6);
+  text-shadow: 0 0 10px rgba(79, 183, 179, 0.6);
   animation: blink 1s steps(2, end) infinite;
 }
 @keyframes blink {
@@ -325,8 +325,8 @@ p {
   pointer-events: none;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(169, 165, 243, 0.05) 0px,
-    rgba(169, 165, 243, 0.05) 1px,
+    rgba(181, 234, 234, 0.05) 0px,
+    rgba(181, 234, 234, 0.05) 1px,
     transparent 1px,
     transparent 4px
   );
