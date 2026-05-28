@@ -2,25 +2,40 @@
 const projects = [
   {
     id: '001',
-    codename: 'AKADEM_VAULT',
-    name: 'AkademVault',
-    desc: 'Full-stack platform for managing academic records and materials. TypeScript web client talking to a C# / .NET API.',
-    stack: ['TypeScript', 'C# / .NET', 'Docker'],
+    codename: 'WIZALLET',
+    name: 'WizAllet',
+    desc: 'Simple personal finance tracker. Vue 3 web client backed by a Go (Gin + GORM) API on Postgres. Live in prod.',
+    stack: ['Vue 3', 'Go', 'Postgres'],
     status: 'ACTIVE',
     links: [
-      { label: 'WEB', href: 'https://github.com/ynshvrh/AkademVault-Web' },
-      { label: 'API', href: 'https://github.com/ynshvrh/AkademVault-API' },
+      { label: 'LIVE', href: 'https://wizallet.netlify.app' },
+      { label: 'WEB', href: 'https://github.com/ynshvrh/WizAllet' },
+      { label: 'API', href: 'https://github.com/ynshvrh/wizallet-api' },
     ],
   },
   {
     id: '002',
     codename: 'V_FRIDGE',
     name: 'V-Fridge',
-    desc: 'Food management system integrated with AI — track what you have and get smart suggestions for what to cook.',
-    stack: ['TypeScript', 'AI', 'Web'],
+    desc: 'Food management with AI — track what you have and get smart cook suggestions. Web client, ASP.NET API, and Flutter mobile.',
+    stack: ['TypeScript', 'C# / .NET', 'Flutter', 'AI'],
+    status: 'ACTIVE',
+    links: [
+      { label: 'WEB', href: 'https://github.com/ynshvrh/V-Fridge' },
+      { label: 'API', href: 'https://github.com/ynshvrh/v-fridge-api' },
+      { label: 'MOB', href: 'https://github.com/ynshvrh/v-fridge-mobile' },
+    ],
+  },
+  {
+    id: '003',
+    codename: 'AKADEM_VAULT',
+    name: 'AkademVault',
+    desc: 'Full-stack platform for managing academic records and materials. TypeScript web client talking to a C# / .NET API.',
+    stack: ['TypeScript', 'C# / .NET', 'Docker'],
     status: 'PROTOTYPE',
     links: [
-      { label: 'REPO', href: 'https://github.com/ynshvrh/V-Fridge' },
+      { label: 'WEB', href: 'https://github.com/ynshvrh/AkademVault-Web' },
+      { label: 'API', href: 'https://github.com/ynshvrh/AkademVault-API' },
     ],
   },
 ];
@@ -189,7 +204,7 @@ const projects = [
   .proj-link:hover {
     color: var(--text);
     border-color: var(--purple);
-    background: rgba(181, 88, 255, 0.08);
+    background: rgba(90, 71, 196, 0.08);
   }
   .proj-link-arrow {
     color: var(--purple);
