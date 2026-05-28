@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title = 'Yanosh — Backend-oriented full-stack developer',
-  description = 'Personal site of Yanosh (Janos) — backend-oriented full-stack developer focused on TypeScript and C#, exploring Go and Rust.',
+  description = 'Personal site of Yanosh (Janos) — backend-oriented full-stack developer currently working with Vue and Go, learning Rust.',
 } = Astro.props;
 ---
 
@@ -31,6 +31,13 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <!-- Living background: bubbles drift up through the page.
+         Purely decorative; hidden under prefers-reduced-motion. -->
+    <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
     <Header />
     <main>
       <slot />

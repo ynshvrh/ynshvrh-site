@@ -117,14 +117,15 @@
     margin-top: 0.5rem;
   }
 
-  /* Main frame */
+  /* Main hero card. The base translucent layer comes from .frame —
+     here we only add two radial flourishes so the bubbles + caustics
+     drifting behind stay subtly visible through the card. */
   .hero-main {
     padding: 2.25rem;
     overflow: hidden;
     background:
-      radial-gradient(ellipse 70% 50% at 15% 0%, rgba(181, 234, 234, 0.08), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(79, 183, 179, 0.10), transparent 60%),
-      var(--panel);
+      radial-gradient(ellipse 70% 50% at 15% 0%, rgba(181, 234, 234, 0.10), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(79, 183, 179, 0.12), transparent 60%);
   }
 
   .meta-top, .meta-bot {
