@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'Yanosh — Backend-oriented full-stack developer',
-  description = 'Personal site of Yanosh (Janos) — backend-oriented full-stack developer currently working with Vue and Go, learning Rust.',
+  title = 'Yanosh — Backend engineer',
+  description = 'Personal site of Yanosh (Janos) — backend engineer working with Go and C# / .NET, learning Rust; also builds for web (Vue) and mobile (Flutter).',
 } = Astro.props;
 ---
 
@@ -29,33 +29,16 @@ const {
       rel="stylesheet"
     />
 
-    <!-- Theme bootstrap — runs before paint to avoid a flash. Reads
-         localStorage; falls back to prefers-color-scheme; default = dark. -->
-    <script is:inline>
-      (function () {
-        try {
-          var key = 'ynshvrh.theme';
-          var stored = localStorage.getItem(key);
-          var theme = (stored === 'light' || stored === 'dark') ? stored
-            : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-          document.documentElement.dataset.theme = theme;
-        } catch (e) {
-          document.documentElement.dataset.theme = 'dark';
-        }
-      })();
-    </script>
-
     <title>{title}</title>
   </head>
   <body>
-    <!-- Ambient particles: bubbles rise in the dark theme, lotus petals
-         fall in the light. Visibility toggles via [data-theme] in CSS. -->
+    <!-- Ambient depth: slow breathing aurora glows, a pointer-following
+         bioluminescent light, and bubbles rising from the deep. -->
+    <div class="glow" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
     <div class="bubbles" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    </div>
-    <div class="petals" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
       <span></span><span></span><span></span><span></span>
     </div>
 
@@ -64,5 +47,57 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <!-- Bioluminescent cursor glow: a soft light trails the pointer.
+         Skipped on touch devices and when reduced motion is requested. -->
+    <script is:inline>
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (window.matchMedia('(hover: none)').matches) return;
+        var glow = document.querySelector('.cursor-glow');
+        if (!glow) return;
+        var tx = 0, ty = 0, x = 0, y = 0, started = false, raf = 0;
+        function loop() {
+          x += (tx - x) * 0.12;
+          y += (ty - y) * 0.12;
+          glow.style.setProperty('--mx', x + 'px');
+          glow.style.setProperty('--my', y + 'px');
+          raf = requestAnimationFrame(loop);
+        }
+        window.addEventListener('pointermove', function (e) {
+          tx = e.clientX; ty = e.clientY;
+          if (!started) {
+            started = true; x = tx; y = ty;
+            document.body.classList.add('has-cursor');
+            loop();
+          }
+        }, { passive: true });
+        window.addEventListener('blur', function () { cancelAnimationFrame(raf); });
+      })();
+    </script>
+
+    <!-- Scroll reveal: sections ease up into view. The hiding class is added
+         by JS only, so no-JS visitors always see content; reduced-motion skips it. -->
+    <script is:inline>
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var els = document.querySelectorAll('main .section');
+        if (!els.length) return;
+        els.forEach(function (el) { el.classList.add('reveal-init'); });
+        if (!('IntersectionObserver' in window)) {
+          els.forEach(function (el) { el.classList.add('reveal-in'); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('reveal-in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -7% 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
   </body>
 </html>

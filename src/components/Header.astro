@@ -1,6 +1,4 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
-
 const nav = [
   { href: '#about',    label: 'About' },
   { href: '#projects', label: 'Projects' },
@@ -16,8 +14,6 @@ const nav = [
       {nav.map((item) => (
         <a href={item.href} class="nav-item">{item.label}</a>
       ))}
-
-      <ThemeToggle />
 
       <a class="nav-icon" href="https://github.com/ynshvrh" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
