@@ -14,9 +14,9 @@ const projects = [
   },
   {
     codename: 'AkademVault',
-    desc: 'Student group coordination platform — real-time chat, file storage, and AI schedule parsing from a photo or PDF. Angular + Capacitor client, C# / .NET API.',
+    desc: 'Student group coordination platform — real-time chat, file storage, and AI schedule parsing from a photo or PDF. Angular + Capacitor client, C# / .NET API. My bachelor thesis project.',
     stack: ['Angular', 'Capacitor', 'C# / .NET', 'PostgreSQL', 'AI'],
-    status: 'active',
+    status: 'demo',
     links: [
       { label: 'Live', href: 'https://akademvault.pages.dev' },
       { label: 'Web',  href: 'https://github.com/ynshvrh/AkademVault-Web' },
@@ -159,9 +159,11 @@ const projects = [
     color: var(--text-mute);
     background: var(--surface);
   }
-  /* shipped = live but no longer actively developed (e.g. a portfolio case):
-     accent-soft, calm, no pulsing dot. */
-  .status-shipped {
+  /* shipped = live but no longer actively developed (e.g. a portfolio case).
+     demo = a live showcase / thesis project, not a product in active dev.
+     Both are calm — accent-soft, no pulsing dot. */
+  .status-shipped,
+  .status-demo {
     color: var(--accent-soft);
     background: var(--accent-tint);
   }

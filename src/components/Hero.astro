@@ -1,11 +1,5 @@
 ---
-const stack = [
-  { name: 'C# / .NET', tier: 'primary'   },
-  { name: 'Angular',   tier: 'secondary' },
-  { name: 'Flutter',   tier: 'secondary' },
-  { name: 'Go',        tier: 'secondary' },
-  { name: 'Rust',      tier: 'secondary' },
-];
+const stack = ['Go', 'Vue', 'C# / .NET', 'Angular', 'Flutter', 'Rust'];
 ---
 
 <section id="top" class="hero section">
@@ -13,19 +7,14 @@ const stack = [
     <p class="hi">Hi, I am</p>
 
     <h1 class="title">
-      <span class="name-swap" aria-label="Yanosh, also known as Janos">
-        <span class="name name-a">Yanosh</span>
-        <span class="name name-b" aria-hidden="true">Janos</span>
-      </span>
+      <span class="name name-float">Yanosh</span>
     </h1>
 
-    <p class="tagline">Backend Engineer.</p>
+    <p class="tagline">Software Engineer.</p>
 
     <p class="lead">
-      Backend mainly in <strong>C# / .NET</strong>. I build UIs with
-      <strong>Angular</strong> and <strong>Flutter</strong>, also know
-      <strong>Go</strong>, and learn <strong>Rust</strong> for myself.
-      At home with PostgreSQL, MongoDB and SQLite. Based in Kyiv.
+      I build across the stack — web, mobile, and the services behind them.
+      Working full-time, shipping my own projects on the side. Based in Kyiv.
     </p>
 
     <div class="cta-row">
@@ -37,7 +26,7 @@ const stack = [
     </div>
 
     <ul class="stack" aria-label="Tech stack">
-      {stack.map((s) => <li class={`chip-${s.tier}`}>{s.name}</li>)}
+      {stack.map((s) => <li>{s}</li>)}
     </ul>
   </div>
 </section>
@@ -68,41 +57,23 @@ const stack = [
     font-weight: 800;
   }
 
-  .name-swap {
-    position: relative;
-    display: inline-block;
-    min-width: 5.5ch;
-  }
-  .name-swap .name {
+  .name {
     display: inline-block;
     background: var(--name-gradient);
-    background-size: 220% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .name-swap .name-b {
-    position: absolute;
-    left: 0; top: 0;
-    white-space: nowrap;
+  /* Gentle "suspended in water" drift — a slow bob, slight sway and micro-tilt.
+     Static blue-to-green ocean gradient underneath; no glitch. */
+  .name-float {
+    animation: name-float 12s ease-in-out infinite;
+    will-change: transform;
   }
-  /* Two animations run together: the swap (opacity / position) and a slow
-     gradient sweep that keeps the name shimmering like light through water. */
-  .name-a { animation: name-a 8s infinite cubic-bezier(0.65, 0, 0.35, 1), name-shimmer 7s linear infinite; }
-  .name-b { animation: name-b 8s infinite cubic-bezier(0.65, 0, 0.35, 1), name-shimmer 7s linear infinite; }
-  @keyframes name-shimmer {
-    0%   { background-position:   0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
-  @keyframes name-a {
-    0%, 45%   { opacity: 1; transform: translateY(0); filter: blur(0); }
-    50%, 95%  { opacity: 0; transform: translateY(-10px); filter: blur(6px); }
-    100%      { opacity: 1; transform: translateY(0); filter: blur(0); }
-  }
-  @keyframes name-b {
-    0%, 45%   { opacity: 0; transform: translateY(10px); filter: blur(6px); }
-    50%, 95%  { opacity: 1; transform: translateY(0); filter: blur(0); }
-    100%      { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  @keyframes name-float {
+    0%, 100% { transform: translate(0, 0)        rotate(0deg);     }
+    33%      { transform: translate(1px, -3px)   rotate(-0.25deg); }
+    66%      { transform: translate(-1px, -2px)  rotate(0.25deg);  }
   }
 
   .tagline {
@@ -157,18 +128,8 @@ const stack = [
   }
   /* Backend = primary focus: accent-tinted and a touch stronger.
      Web / mobile = secondary: muted, lighter weight. */
-  .stack li.chip-primary {
-    color: var(--accent-soft);
-    border-color: var(--accent-soft);
-    background: var(--accent-tint);
-    font-weight: 600;
-  }
-  .stack li.chip-secondary {
-    opacity: 0.82;
-  }
 
   @media (prefers-reduced-motion: reduce) {
-    .name-a, .name-b { animation: none; }
-    .name-b { display: none; }
+    .name-float { animation: none; }
   }
 </style>

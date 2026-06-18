@@ -7,8 +7,8 @@
 :root {
   --bg:                #020a14;
   --bg-gradient:
-    radial-gradient(ellipse 85% 45% at 50% -5%,  rgba(109, 163, 184, 0.32), transparent 60%),
-    radial-gradient(ellipse 50% 35% at 100% 50%, rgba(109, 163, 184, 0.10), transparent 60%),
+    radial-gradient(ellipse 85% 45% at 50% -5%,  rgba(41, 179, 170, 0.32), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 100% 50%, rgba(41, 179, 170, 0.10), transparent 60%),
     #020a14;
   --header-bg:         rgba(2, 10, 20, 0.65);
 
@@ -16,22 +16,22 @@
   --text-dim:          #8aa0aa;
   --text-mute:         #5b7882;
 
-  --accent:            #6da3b8;
-  --accent-soft:       #95c0d0;
-  --accent-tint:       rgba(109, 163, 184, 0.12);
-  --accent-tint-strong:rgba(109, 163, 184, 0.22);
+  --accent:            #29b3aa;
+  --accent-soft:       #5fd6cb;
+  --accent-tint:       rgba(41, 179, 170, 0.12);
+  --accent-tint-strong:rgba(41, 179, 170, 0.22);
 
   --card:              rgba(8, 22, 36, 0.55);
   --card-shadow:       0 18px 50px -28px rgba(0, 0, 0, 0.85),
                        inset 0 1px 0 rgba(216, 231, 236, 0.05);
-  --card-shadow-hover: 0 26px 70px -28px rgba(109, 163, 184, 0.45),
+  --card-shadow-hover: 0 26px 70px -28px rgba(41, 179, 170, 0.45),
                        inset 0 1px 0 rgba(216, 231, 236, 0.08);
 
-  --surface:           rgba(109, 163, 184, 0.06);
-  --surface-hover:     rgba(109, 163, 184, 0.14);
-  --line:              rgba(109, 163, 184, 0.18);
+  --surface:           rgba(41, 179, 170, 0.06);
+  --surface-hover:     rgba(41, 179, 170, 0.14);
+  --line:              rgba(41, 179, 170, 0.18);
 
-  --name-gradient:     linear-gradient(110deg, #6da3b8 0%, #95c0d0 35%, #d8e7ec 60%, #6da3b8 100%);
+  --name-gradient:     linear-gradient(110deg, #5b8def 0%, #29b3aa 42%, #34d1b6 72%, #e6f3f0 100%);
 
   --bubble-color:      rgba(216, 231, 236, 0.45);
 
@@ -176,13 +176,13 @@ strong { color: inherit; font-weight: 600; }
 .glow::before {
   width: 62vw; height: 52vh;
   top: -22vh; left: 16vw;
-  background: radial-gradient(circle, rgba(109, 163, 184, 0.20), transparent 70%);
+  background: radial-gradient(circle, rgba(91, 141, 239, 0.22), transparent 70%);
   animation: glow-a 24s ease-in-out infinite;
 }
 .glow::after {
   width: 48vw; height: 42vh;
   bottom: -14vh; right: 8vw;
-  background: radial-gradient(circle, rgba(109, 163, 184, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(52, 209, 182, 0.17), transparent 70%);
   animation: glow-b 30s ease-in-out infinite;
 }
 @keyframes glow-a {
