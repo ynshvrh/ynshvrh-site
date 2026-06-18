@@ -1,22 +1,12 @@
 ---
 const projects = [
   {
-    codename: 'WizAllet',
-    desc: 'Simple personal finance tracker. Vue 3 web client backed by a Go (Gin + GORM) API on Postgres. Live in prod.',
-    stack: ['Vue 3', 'Go', 'Postgres'],
-    status: 'active',
-    links: [
-      { label: 'Live', href: 'https://wizallet.netlify.app' },
-      { label: 'Web',  href: 'https://github.com/ynshvrh/WizAllet' },
-      { label: 'API',  href: 'https://github.com/ynshvrh/wizallet-api' },
-    ],
-  },
-  {
     codename: 'V-Fridge',
     desc: 'Food management with AI — track what you have and get smart cook suggestions. Web client, ASP.NET API, Flutter mobile.',
     stack: ['TypeScript', 'C# / .NET', 'Flutter', 'AI'],
     status: 'active',
     links: [
+      { label: 'Live',   href: 'https://v-fridge.vercel.app' },
       { label: 'Web',    href: 'https://github.com/ynshvrh/V-Fridge' },
       { label: 'API',    href: 'https://github.com/ynshvrh/v-fridge-api' },
       { label: 'Mobile', href: 'https://github.com/ynshvrh/v-fridge-mobile' },
@@ -24,12 +14,24 @@ const projects = [
   },
   {
     codename: 'AkademVault',
-    desc: 'Full-stack platform for managing academic records and materials. TypeScript web client talking to a C# / .NET API.',
-    stack: ['TypeScript', 'C# / .NET', 'Docker'],
-    status: 'prototype',
+    desc: 'Student group coordination platform — real-time chat, file storage, and AI schedule parsing from a photo or PDF. Angular + Capacitor client, C# / .NET API.',
+    stack: ['Angular', 'Capacitor', 'C# / .NET', 'PostgreSQL', 'AI'],
+    status: 'active',
     links: [
-      { label: 'Web', href: 'https://github.com/ynshvrh/AkademVault-Web' },
-      { label: 'API', href: 'https://github.com/ynshvrh/AkademVault-API' },
+      { label: 'Live', href: 'https://akademvault.pages.dev' },
+      { label: 'Web',  href: 'https://github.com/ynshvrh/AkademVault-Web' },
+      { label: 'API',  href: 'https://github.com/ynshvrh/AkademVault-API' },
+    ],
+  },
+  {
+    codename: 'WizAllet',
+    desc: 'Personal finance tracker. Vue 3 web client backed by a Go (Gin + GORM) API on Postgres. A finished portfolio case.',
+    stack: ['Vue 3', 'Go', 'Postgres'],
+    status: 'shipped',
+    links: [
+      { label: 'Live', href: 'https://wizallet.netlify.app' },
+      { label: 'Web',  href: 'https://github.com/ynshvrh/WizAllet' },
+      { label: 'API',  href: 'https://github.com/ynshvrh/wizallet-api' },
     ],
   },
 ];
@@ -156,6 +158,12 @@ const projects = [
   .status-prototype {
     color: var(--text-mute);
     background: var(--surface);
+  }
+  /* shipped = live but no longer actively developed (e.g. a portfolio case):
+     accent-soft, calm, no pulsing dot. */
+  .status-shipped {
+    color: var(--accent-soft);
+    background: var(--accent-tint);
   }
   @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
 
