@@ -1,9 +1,21 @@
 ---
-const stack = ['Go', 'Vue', 'C# / .NET', 'Angular', 'Flutter', 'Rust'];
+const stack = [
+  { name: 'C# / .NET', tier: 'primary'   },
+  { name: 'Angular',   tier: 'primary'   },
+  { name: 'Flutter',   tier: 'primary'   },
+  { name: 'Go',        tier: 'secondary' },
+  { name: 'Vue',       tier: 'secondary' },
+  { name: 'Rust',      tier: 'secondary' },
+];
 ---
 
 <section id="top" class="hero section">
   <div class="container hero-wrap">
+    <a href="#contact" class="open-badge">
+      <span class="open-dot" aria-hidden="true"></span>
+      Open to work
+    </a>
+
     <p class="hi">Hi, I am</p>
 
     <h1 class="title">
@@ -14,7 +26,9 @@ const stack = ['Go', 'Vue', 'C# / .NET', 'Angular', 'Flutter', 'Rust'];
 
     <p class="lead">
       I build across the stack — web, mobile, and the services behind them.
-      Working full-time, shipping my own projects on the side. Based in Kyiv.
+      Focused on <strong>C# / .NET</strong>, <strong>Angular</strong> and
+      <strong>Flutter</strong>, with commercial experience in
+      <strong>Go</strong> and <strong>Vue</strong>. Open to work, based in Kyiv.
     </p>
 
     <div class="cta-row">
@@ -26,7 +40,7 @@ const stack = ['Go', 'Vue', 'C# / .NET', 'Angular', 'Flutter', 'Rust'];
     </div>
 
     <ul class="stack" aria-label="Tech stack">
-      {stack.map((s) => <li>{s}</li>)}
+      {stack.map((s) => <li class={`chip-${s.tier}`}>{s.name}</li>)}
     </ul>
   </div>
 </section>
@@ -40,6 +54,40 @@ const stack = ['Go', 'Vue', 'C# / .NET', 'Angular', 'Flutter', 'Rust'];
   .hero-wrap {
     max-width: 760px;
     margin: 0 auto;
+  }
+
+  /* Availability badge — a green "open to work" pill with a pulsing dot,
+     links down to the contact section. */
+  .open-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem 0.35rem 0.7rem;
+    margin-bottom: 1.4rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #46d39a;
+    background: rgba(70, 211, 154, 0.10);
+    border: 1px solid rgba(70, 211, 154, 0.30);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .open-badge:hover {
+    color: #46d39a;
+    background: rgba(70, 211, 154, 0.18);
+    transform: translateY(-1px);
+  }
+  .open-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #46d39a;
+    box-shadow: 0 0 0 0 rgba(70, 211, 154, 0.5);
+    animation: open-pulse 2s infinite;
+  }
+  @keyframes open-pulse {
+    0%   { box-shadow: 0 0 0 0   rgba(70, 211, 154, 0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(70, 211, 154, 0);   }
+    100% { box-shadow: 0 0 0 0   rgba(70, 211, 154, 0);   }
   }
 
   .hi {
@@ -126,10 +174,20 @@ const stack = ['Go', 'Vue', 'C# / .NET', 'Angular', 'Flutter', 'Rust'];
     background: var(--surface-hover);
     transform: translateY(-2px);
   }
-  /* Backend = primary focus: accent-tinted and a touch stronger.
-     Web / mobile = secondary: muted, lighter weight. */
+  /* Priority stack (C# / Angular / Flutter): accent-tinted, a touch stronger.
+     Go / Vue / Rust = secondary: muted. */
+  .stack li.chip-primary {
+    color: var(--accent-soft);
+    border-color: var(--accent-soft);
+    background: var(--accent-tint);
+    font-weight: 600;
+  }
+  .stack li.chip-secondary {
+    opacity: 0.82;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .name-float { animation: none; }
+    .open-dot { animation: none; }
   }
 </style>
