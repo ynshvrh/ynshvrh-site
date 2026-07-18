@@ -254,6 +254,21 @@ body.has-cursor .cursor-glow { opacity: 1; }
   100% { transform: translateY(-115vh) translateX(-6px) scale(0.8); opacity: 0; }
 }
 
+/* ---------- Glowing Cards (Gradient Borders) ---------- */
+.glowing-card {
+  background: 
+    linear-gradient(rgba(8, 22, 36, 0.55), rgba(8, 22, 36, 0.55)) padding-box, 
+    linear-gradient(135deg, rgba(41, 179, 170, 0.15), rgba(41, 179, 170, 0.15)) border-box !important;
+  border: 1px solid transparent !important;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+.glowing-card:hover {
+  background: 
+    linear-gradient(rgba(8, 22, 36, 0.65), rgba(8, 22, 36, 0.65)) padding-box, 
+    linear-gradient(135deg, var(--accent), var(--accent-soft)) border-box !important;
+  box-shadow: var(--card-shadow-hover) !important;
+}
+
 /* ---------- Scroll reveal ----------
    Sections start slightly lowered + transparent (class added by JS only, so
    no-JS visitors always see content), then ease into place when scrolled in. */
