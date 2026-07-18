@@ -1,12 +1,4 @@
 ---
-const stack = [
-  { name: 'C# / .NET', tier: 'primary'   },
-  { name: 'Angular',   tier: 'primary'   },
-  { name: 'Flutter',   tier: 'primary'   },
-  { name: 'Go',        tier: 'secondary' },
-  { name: 'Vue',       tier: 'secondary' },
-  { name: 'Rust',      tier: 'secondary' },
-];
 ---
 
 <section id="top" class="hero section">
@@ -25,10 +17,9 @@ const stack = [
     <p class="tagline">Software Engineer.</p>
 
     <p class="lead">
-      I build across the stack — web, mobile, and the services behind them.
-      Focused on <strong>C# / .NET</strong>, <strong>Angular</strong> and
-      <strong>Flutter</strong>, with commercial experience in
-      <strong>Go</strong> and <strong>Vue</strong>. Open to work, based in Kyiv.
+      I am a software engineer focused on building robust backends and clean frontends. 
+      I specialize in two production-ready developer stacks, selecting the right toolset 
+      for the project's scale. Based in Kyiv, open to work.
     </p>
 
     <div class="cta-row">
@@ -39,9 +30,26 @@ const stack = [
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
     </div>
 
-    <ul class="stack" aria-label="Tech stack">
-      {stack.map((s) => <li class={`chip-${s.tier}`}>{s.name}</li>)}
-    </ul>
+    <div class="stack-grid" aria-label="Core Tech Stacks">
+      <div class="stack-card">
+        <h3 class="stack-title">Enterprise & Robust</h3>
+        <p class="stack-pair">C# + Angular</p>
+        <p class="stack-desc">Solid, scalable architecture, type safety, and maintainable enterprise web platforms.</p>
+      </div>
+      <div class="stack-card">
+        <h3 class="stack-title">Agile & Lightweight</h3>
+        <p class="stack-pair">Go + Vue</p>
+        <p class="stack-desc">Fast backend services, high concurrency, and clean, reactive client-side applications.</p>
+      </div>
+    </div>
+
+    <div class="fun-stack">
+      <span class="fun-label">For fun & side projects:</span>
+      <ul class="fun-list">
+        <li>Rust</li>
+        <li>Dart (Flutter)</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -150,40 +158,90 @@ const stack = [
     margin-bottom: 2.5rem;
   }
 
-  .stack {
+  /* Core Stacks Cards Grid */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .stack-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+  }
+  .stack-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-soft);
+    box-shadow: var(--card-shadow-hover);
+  }
+  .stack-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.4rem;
+  }
+  .stack-pair {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .stack-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Fun Stack list */
+  .fun-stack {
     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
+  }
+  .fun-label {
+    font-size: 0.82rem;
+    color: var(--text-mute);
+    font-weight: 500;
+  }
+  .fun-list {
+    display: flex;
     gap: 0.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  .stack li {
-    font-size: 0.78rem;
+  .fun-list li {
+    font-size: 0.75rem;
     color: var(--text-dim);
-    padding: 0.32rem 0.75rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 999px;
     border: 1px solid var(--line);
     background: var(--surface);
-    transition: color 0.2s ease, border-color 0.2s ease,
-                background 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
-  .stack li:hover {
+  .fun-list li:hover {
     color: var(--text);
     border-color: var(--accent-soft);
     background: var(--surface-hover);
-    transform: translateY(-2px);
   }
-  /* Priority stack (C# / Angular / Flutter): accent-tinted, a touch stronger.
-     Go / Vue / Rust = secondary: muted. */
-  .stack li.chip-primary {
-    color: var(--accent-soft);
-    border-color: var(--accent-soft);
-    background: var(--accent-tint);
-    font-weight: 600;
-  }
-  .stack li.chip-secondary {
-    opacity: 0.82;
+
+  @media (max-width: 600px) {
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
