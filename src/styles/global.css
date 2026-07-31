@@ -1,39 +1,46 @@
 /*
- * Single theme — "Deep Orca": a deep-ocean dark palette. Components reference
- * colours by semantic role (--bg, --text, --accent, --card, …) and never by
- * literal colour, so the palette stays in one place.
+ * Single Theme — "Obsidian Emerald & Cyber Violet":
+ * A high-tech obsidian dark palette (#07090e) featuring electric emerald (#10b981)
+ * and neon cyber violet (#8b5cf6) accents, glassmorphism cards with gradient borders,
+ * cyber-grid overlay, and floating micro-sparks.
  */
 
 :root {
-  --bg:                #020a14;
+  --bg:                #07090e;
   --bg-gradient:
-    radial-gradient(ellipse 85% 45% at 50% -5%,  rgba(41, 179, 170, 0.32), transparent 60%),
-    radial-gradient(ellipse 50% 35% at 100% 50%, rgba(41, 179, 170, 0.10), transparent 60%),
-    #020a14;
-  --header-bg:         rgba(2, 10, 20, 0.65);
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(16, 185, 129, 0.25), transparent 65%),
+    radial-gradient(ellipse 60% 45% at 100% 45%, rgba(139, 92, 246, 0.18), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 0% 90%,   rgba(16, 185, 129, 0.12), transparent 65%),
+    #07090e;
+  --header-bg:         rgba(7, 9, 14, 0.75);
 
-  --text:              #d8e7ec;
-  --text-dim:          #8aa0aa;
-  --text-mute:         #5b7882;
+  --text:              #e2e8f0;
+  --text-dim:          #94a3b8;
+  --text-mute:         #64748b;
 
-  --accent:            #29b3aa;
-  --accent-soft:       #5fd6cb;
-  --accent-tint:       rgba(41, 179, 170, 0.12);
-  --accent-tint-strong:rgba(41, 179, 170, 0.22);
+  --accent:            #10b981; /* Electric Emerald */
+  --accent-soft:       #34d399;
+  --accent-secondary:  #8b5cf6; /* Cyber Violet */
+  --accent-secondary-soft: #a78bfa;
 
-  --card:              rgba(8, 22, 36, 0.55);
-  --card-shadow:       0 18px 50px -28px rgba(0, 0, 0, 0.85),
-                       inset 0 1px 0 rgba(216, 231, 236, 0.05);
-  --card-shadow-hover: 0 26px 70px -28px rgba(41, 179, 170, 0.45),
-                       inset 0 1px 0 rgba(216, 231, 236, 0.08);
+  --accent-tint:       rgba(16, 185, 129, 0.12);
+  --accent-tint-strong:rgba(16, 185, 129, 0.22);
+  --violet-tint:       rgba(139, 92, 246, 0.14);
 
-  --surface:           rgba(41, 179, 170, 0.06);
-  --surface-hover:     rgba(41, 179, 170, 0.14);
-  --line:              rgba(41, 179, 170, 0.18);
+  --card:              rgba(15, 23, 42, 0.65);
+  --card-shadow:       0 18px 50px -28px rgba(0, 0, 0, 0.9),
+                       inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --card-shadow-hover: 0 26px 70px -25px rgba(16, 185, 129, 0.4),
+                       0 0 35px -10px rgba(139, 92, 246, 0.3),
+                       inset 0 1px 0 rgba(255, 255, 255, 0.15);
 
-  --name-gradient:     linear-gradient(110deg, #5b8def 0%, #29b3aa 42%, #34d1b6 72%, #e6f3f0 100%);
+  --surface:           rgba(16, 185, 129, 0.06);
+  --surface-hover:     rgba(16, 185, 129, 0.14);
+  --line:              rgba(16, 185, 129, 0.2);
 
-  --bubble-color:      rgba(216, 231, 236, 0.45);
+  --name-gradient:     linear-gradient(115deg, #34d399 0%, #10b981 35%, #8b5cf6 70%, #c084fc 100%);
+
+  --spark-color:       rgba(52, 211, 153, 0.6);
 
   color-scheme: dark;
 }
@@ -126,15 +133,15 @@ strong { color: inherit; font-weight: 600; }
               background 0.2s ease, box-shadow 0.3s ease;
 }
 .btn-primary {
-  background: var(--accent);
-  color: #020a14;
-  box-shadow: 0 10px 24px -10px var(--accent);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #04130c;
+  box-shadow: 0 10px 24px -10px rgba(16, 185, 129, 0.7);
 }
 .btn-primary:hover {
-  background: var(--accent-soft);
-  color: #020a14;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: #04130c;
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px -8px var(--accent);
+  box-shadow: 0 14px 30px -8px rgba(16, 185, 129, 0.85);
 }
 
 .btn-ghost {
@@ -150,15 +157,13 @@ strong { color: inherit; font-weight: 600; }
 }
 
 /* ---------- Selection + scrollbar ---------- */
-::selection { background: var(--accent-tint-strong); color: var(--text); }
+::selection { background: rgba(16, 185, 129, 0.3); color: #ffffff; }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--accent-tint-strong); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.3); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* ---------- Ambient layer 0: drifting aurora glows ----------
-   Two large, soft, slowly-breathing light blobs deep behind everything —
-   gives the dark a sense of moving water and depth. */
+/* ---------- Ambient layer 0: drifting aurora glows ---------- */
 .glow {
   position: fixed;
   inset: 0;
@@ -171,18 +176,18 @@ strong { color: inherit; font-weight: 600; }
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(70px);
+  filter: blur(80px);
 }
 .glow::before {
   width: 62vw; height: 52vh;
   top: -22vh; left: 16vw;
-  background: radial-gradient(circle, rgba(91, 141, 239, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22), transparent 70%);
   animation: glow-a 24s ease-in-out infinite;
 }
 .glow::after {
-  width: 48vw; height: 42vh;
+  width: 52vw; height: 45vh;
   bottom: -14vh; right: 8vw;
-  background: radial-gradient(circle, rgba(52, 209, 182, 0.17), transparent 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18), transparent 70%);
   animation: glow-b 30s ease-in-out infinite;
 }
 @keyframes glow-a {
@@ -194,84 +199,90 @@ strong { color: inherit; font-weight: 600; }
   50%      { transform: translate(-3vw, -2vh)  scale(1.12); opacity: 0.95; }
 }
 
-/* ---------- Ambient layer 2: bioluminescent glow following the pointer ----------
-   A soft cool light that trails the cursor like deep-sea bioluminescence.
-   Sits behind the content (z-index 2 < content's 3) so cards catch the light. */
+/* ---------- Cyber Grid Background Pattern ---------- */
+.cyber-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: 
+    linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
+}
+
+/* ---------- Ambient layer 2: bioluminescent cursor glow ---------- */
 .cursor-glow {
   position: fixed;
   top: 0; left: 0;
-  width: 460px; height: 460px;
-  margin: -230px 0 0 -230px;
+  width: 480px; height: 480px;
+  margin: -240px 0 0 -240px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
-  background: radial-gradient(circle, var(--accent-tint) 0%, transparent 62%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 70%);
   transform: translate(var(--mx, -9999px), var(--my, -9999px));
   opacity: 0;
   transition: opacity 0.7s ease;
 }
 body.has-cursor .cursor-glow { opacity: 1; }
 
-/* ---------- Ambient particles: bubbles rising from the depths ---------- */
-.bubbles {
+/* ---------- Ambient particles: floating cyber micro-sparks ---------- */
+.sparks {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
 }
-.bubbles span {
+.sparks span {
   position: absolute;
-  bottom: -24px;
+  bottom: -20px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%,
-      var(--bubble-color) 0%,
-      transparent 70%);
-  animation: rise linear infinite;
+  background: radial-gradient(circle, var(--accent-soft) 0%, var(--accent-secondary-soft) 100%);
+  box-shadow: 0 0 8px var(--accent-soft);
+  animation: spark-rise linear infinite;
   opacity: 0;
 }
-.bubbles span:nth-child(1)  { left:  5%; width:  6px; height:  6px; animation-duration: 18s; animation-delay:  -1s; }
-.bubbles span:nth-child(2)  { left: 13%; width: 10px; height: 10px; animation-duration: 24s; animation-delay:  -5s; }
-.bubbles span:nth-child(3)  { left: 21%; width:  5px; height:  5px; animation-duration: 16s; animation-delay:  -9s; }
-.bubbles span:nth-child(4)  { left: 29%; width:  8px; height:  8px; animation-duration: 22s; animation-delay: -13s; }
-.bubbles span:nth-child(5)  { left: 37%; width:  7px; height:  7px; animation-duration: 20s; animation-delay:  -3s; }
-.bubbles span:nth-child(6)  { left: 45%; width: 11px; height: 11px; animation-duration: 28s; animation-delay: -11s; }
-.bubbles span:nth-child(7)  { left: 53%; width:  6px; height:  6px; animation-duration: 19s; animation-delay:  -7s; }
-.bubbles span:nth-child(8)  { left: 61%; width:  9px; height:  9px; animation-duration: 26s; animation-delay: -15s; }
-.bubbles span:nth-child(9)  { left: 69%; width:  5px; height:  5px; animation-duration: 17s; animation-delay:  -2s; }
-.bubbles span:nth-child(10) { left: 77%; width: 12px; height: 12px; animation-duration: 30s; animation-delay: -19s; }
-.bubbles span:nth-child(11) { left: 85%; width:  7px; height:  7px; animation-duration: 21s; animation-delay:  -6s; }
-.bubbles span:nth-child(12) { left: 92%; width:  9px; height:  9px; animation-duration: 25s; animation-delay: -14s; }
-.bubbles span:nth-child(13) { left: 33%; width:  4px; height:  4px; animation-duration: 15s; animation-delay: -10s; }
-.bubbles span:nth-child(14) { left: 66%; width:  4px; height:  4px; animation-duration: 14s; animation-delay:  -4s; }
+.sparks span:nth-child(1)  { left:  6%; width: 3px; height: 3px; animation-duration: 18s; animation-delay:  -1s; }
+.sparks span:nth-child(2)  { left: 15%; width: 5px; height: 5px; animation-duration: 24s; animation-delay:  -5s; }
+.sparks span:nth-child(3)  { left: 24%; width: 3px; height: 3px; animation-duration: 16s; animation-delay:  -9s; }
+.sparks span:nth-child(4)  { left: 32%; width: 4px; height: 4px; animation-duration: 22s; animation-delay: -13s; }
+.sparks span:nth-child(5)  { left: 40%; width: 3px; height: 3px; animation-duration: 20s; animation-delay:  -3s; }
+.sparks span:nth-child(6)  { left: 48%; width: 6px; height: 6px; animation-duration: 28s; animation-delay: -11s; }
+.sparks span:nth-child(7)  { left: 56%; width: 3px; height: 3px; animation-duration: 19s; animation-delay:  -7s; }
+.sparks span:nth-child(8)  { left: 64%; width: 4px; height: 4px; animation-duration: 26s; animation-delay: -15s; }
+.sparks span:nth-child(9)  { left: 72%; width: 3px; height: 3px; animation-duration: 17s; animation-delay:  -2s; }
+.sparks span:nth-child(10) { left: 80%; width: 5px; height: 5px; animation-duration: 30s; animation-delay: -19s; }
+.sparks span:nth-child(11) { left: 88%; width: 3px; height: 3px; animation-duration: 21s; animation-delay:  -6s; }
+.sparks span:nth-child(12) { left: 95%; width: 4px; height: 4px; animation-duration: 25s; animation-delay: -14s; }
 
-@keyframes rise {
-  0%   { transform: translateY(0)     translateX(0)   scale(0.85); opacity: 0; }
-  10%  { opacity: 0.6; }
-  50%  { transform: translateY(-55vh) translateX(10px) scale(1); }
-  90%  { opacity: 0.4; }
-  100% { transform: translateY(-115vh) translateX(-6px) scale(0.8); opacity: 0; }
+@keyframes spark-rise {
+  0%   { transform: translateY(0)     translateX(0)   scale(0.8); opacity: 0; }
+  15%  { opacity: 0.8; }
+  50%  { transform: translateY(-55vh) translateX(12px) scale(1.2); }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(-115vh) translateX(-8px) scale(0.6); opacity: 0; }
 }
 
-/* ---------- Glowing Cards (Gradient Borders) ---------- */
+/* ---------- Glowing Cards (Obsidian Glass + Gradient Borders) ---------- */
 .glowing-card {
   background: 
-    linear-gradient(rgba(8, 22, 36, 0.55), rgba(8, 22, 36, 0.55)) padding-box, 
-    linear-gradient(135deg, rgba(41, 179, 170, 0.15), rgba(41, 179, 170, 0.15)) border-box !important;
+    linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(11, 15, 25, 0.85)) padding-box, 
+    linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(139, 92, 246, 0.25)) border-box !important;
   border: 1px solid transparent !important;
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 .glowing-card:hover {
   background: 
-    linear-gradient(rgba(8, 22, 36, 0.65), rgba(8, 22, 36, 0.65)) padding-box, 
-    linear-gradient(135deg, var(--accent), var(--accent-soft)) border-box !important;
+    linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(11, 15, 25, 0.95)) padding-box, 
+    linear-gradient(135deg, var(--accent-soft), var(--accent-secondary-soft)) border-box !important;
   box-shadow: var(--card-shadow-hover) !important;
 }
 
-/* ---------- Scroll reveal ----------
-   Sections start slightly lowered + transparent (class added by JS only, so
-   no-JS visitors always see content), then ease into place when scrolled in. */
+/* ---------- Scroll reveal ---------- */
 .reveal-init { opacity: 0; transform: translateY(18px); will-change: opacity, transform; }
 .reveal-in {
   opacity: 1;
@@ -281,7 +292,7 @@ body.has-cursor .cursor-glow { opacity: 1; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .bubbles, .glow { display: none; }
+  .sparks, .glow, .cyber-grid { display: none; }
   .cursor-glow { display: none; }
   .reveal-init { opacity: 1; transform: none; }
 }
