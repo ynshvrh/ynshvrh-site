@@ -1,0 +1,226 @@
+---
+---
+
+<div class="pacman-arcade-banner" aria-hidden="true">
+  <div class="arcade-track">
+    <!-- Line of neon food dots -->
+    <div class="dots-row">
+      {Array.from({ length: 30 }).map((_, i) => (
+        <span class={`arcade-dot dot-${i % 2 === 0 ? 'red' : 'blue'}`}></span>
+      ))}
+    </div>
+
+    <!-- Chaser group: Pac-Man leading, Ghosts trailing -->
+    <div class="chaser-runner">
+      <!-- Pac-Man -->
+      <div class="pacman-character">
+        <div class="pacman-mouth"></div>
+      </div>
+
+      <!-- Red Ghost (Blinky) -->
+      <div class="ghost-character ghost-blinky">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C7 2 3 6 3 11v11l3-3 3 3 3-3 3 3V11c0-5-4-9-9-9z" fill="#ef4444"/>
+          <circle cx="8" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="9.2" cy="10" r="1.2" fill="#0f172a"/>
+          <circle cx="16" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="17.2" cy="10" r="1.2" fill="#0f172a"/>
+        </svg>
+      </div>
+
+      <!-- Blue Ghost (Inky) -->
+      <div class="ghost-character ghost-inky">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C7 2 3 6 3 11v11l3-3 3 3 3-3 3 3V11c0-5-4-9-9-9z" fill="#3b82f6"/>
+          <circle cx="8" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="9.2" cy="10" r="1.2" fill="#0f172a"/>
+          <circle cx="16" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="17.2" cy="10" r="1.2" fill="#0f172a"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pacman-arcade-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 38px;
+    pointer-events: none;
+    z-index: 20;
+    overflow: hidden;
+    background: linear-gradient(to top, rgba(8, 10, 15, 0.85), transparent);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.25);
+  }
+
+  .arcade-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Dots Row */
+  .dots-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+  }
+  .arcade-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .arcade-dot.dot-red {
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+  }
+  .arcade-dot.dot-blue {
+    background: #3b82f6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+  }
+  .arcade-dot.eaten {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  /* Runner group */
+  .chaser-runner {
+    position: absolute;
+    top: 50%;
+    left: -120px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: run-across 14s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes run-across {
+    0% {
+      left: -140px;
+    }
+    100% {
+      left: calc(100% + 40px);
+    }
+  }
+
+  /* Pac-Man CSS Mouth Chomp */
+  .pacman-character {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    background: #fbbf24;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.9);
+  }
+
+  .pacman-mouth {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pacman-mouth::before,
+  .pacman-mouth::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  .pacman-mouth::before {
+    top: 0;
+    border-width: 12px 12px 0 0;
+    border-color: #080a0f transparent transparent transparent;
+    animation: chomp-top 0.25s ease-in-out infinite alternate;
+  }
+
+  .pacman-mouth::after {
+    bottom: 0;
+    border-width: 0 12px 12px 0;
+    border-color: transparent transparent #080a0f transparent;
+    animation: chomp-bottom 0.25s ease-in-out infinite alternate;
+  }
+
+  @keyframes chomp-top {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-35deg); }
+  }
+
+  @keyframes chomp-bottom {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(35deg); }
+  }
+
+  /* Ghosts Floating Animation */
+  .ghost-character {
+    display: flex;
+    align-items: center;
+    animation: ghost-bob 0.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes ghost-bob {
+    0% { transform: translateY(-2px); }
+    100% { transform: translateY(2px); }
+  }
+
+  .ghost-blinky svg {
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+  }
+  .ghost-inky svg {
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pacman-arcade-banner { display: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    
+    var dots = document.querySelectorAll('.arcade-dot');
+    var runner = document.querySelector('.chaser-runner');
+    if (!runner || !dots.length) return;
+
+    function checkEating() {
+      var runnerRect = runner.getBoundingClientRect();
+      var pacmanX = runnerRect.left + 24;
+
+      dots.forEach(function (dot) {
+        var dotRect = dot.getBoundingClientRect();
+        if (dotRect.left <= pacmanX && !dot.classList.contains('eaten')) {
+          dot.classList.add('eaten');
+        }
+      });
+    }
+
+    // Reset dots when runner loops back to start
+    runner.addEventListener('animationiteration', function () {
+      dots.forEach(function (dot) {
+        dot.classList.remove('eaten');
+      });
+    });
+
+    // Check collision frame-by-frame
+    function loop() {
+      checkEating();
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+</script>
