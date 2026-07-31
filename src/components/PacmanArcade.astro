@@ -1,25 +1,32 @@
 ---
 ---
 
-<div class="pacman-arcade-banner" aria-hidden="true">
-  <div class="arcade-track">
-    <!-- Line of neon food dots -->
-    <div class="dots-row">
-      {Array.from({ length: 30 }).map((_, i) => (
+<div class="blurred-arcade-layer" aria-hidden="true">
+  <!-- Ambient backdrop blur overlay -->
+  <div class="arcade-frosted-overlay"></div>
+
+  <!-- Background Arcade Level 1 (Mid-screen track) -->
+  <div class="arcade-track track-mid">
+    <div class="dots-line">
+      {Array.from({ length: 24 }).map((_, i) => (
         <span class={`arcade-dot dot-${i % 2 === 0 ? 'red' : 'blue'}`}></span>
       ))}
     </div>
 
-    <!-- Chaser group: Pac-Man leading, Ghosts trailing -->
-    <div class="chaser-runner">
-      <!-- Pac-Man -->
-      <div class="pacman-character">
-        <div class="pacman-mouth"></div>
+    <div class="chaser-group runner-mid">
+      <!-- Fixed Clean SVG Pac-Man -->
+      <div class="pacman-svg-wrap">
+        <svg class="pacman-svg" width="30" height="30" viewBox="0 0 32 32">
+          <!-- Upper jaw -->
+          <path class="jaw jaw-top" fill="#fbbf24" d="M 16 16 L 30 16 A 14 14 0 0 0 16 2 Z" />
+          <!-- Lower jaw -->
+          <path class="jaw jaw-bottom" fill="#fbbf24" d="M 16 16 L 30 16 A 14 14 0 0 1 16 30 Z" />
+        </svg>
       </div>
 
-      <!-- Red Ghost (Blinky) -->
-      <div class="ghost-character ghost-blinky">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <!-- Blinky (Red Ghost) -->
+      <div class="ghost-svg ghost-blinky">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
           <path d="M12 2C7 2 3 6 3 11v11l3-3 3 3 3-3 3 3V11c0-5-4-9-9-9z" fill="#ef4444"/>
           <circle cx="8" cy="10" r="2.5" fill="#ffffff"/>
           <circle cx="9.2" cy="10" r="1.2" fill="#0f172a"/>
@@ -28,9 +35,9 @@
         </svg>
       </div>
 
-      <!-- Blue Ghost (Inky) -->
-      <div class="ghost-character ghost-inky">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <!-- Inky (Blue Ghost) -->
+      <div class="ghost-svg ghost-inky">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
           <path d="M12 2C7 2 3 6 3 11v11l3-3 3 3 3-3 3 3V11c0-5-4-9-9-9z" fill="#3b82f6"/>
           <circle cx="8" cy="10" r="2.5" fill="#ffffff"/>
           <circle cx="9.2" cy="10" r="1.2" fill="#0f172a"/>
@@ -40,37 +47,96 @@
       </div>
     </div>
   </div>
+
+  <!-- Background Arcade Level 2 (Lower track with Pinky & Clyde) -->
+  <div class="arcade-track track-bottom">
+    <div class="dots-line">
+      {Array.from({ length: 24 }).map((_, i) => (
+        <span class={`arcade-dot dot-${i % 2 === 0 ? 'blue' : 'red'}`}></span>
+      ))}
+    </div>
+
+    <div class="chaser-group runner-bottom">
+      <!-- Pinky (Pink Ghost) -->
+      <div class="ghost-svg ghost-pinky">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C7 2 3 6 3 11v11l3-3 3 3 3-3 3 3V11c0-5-4-9-9-9z" fill="#f472b6"/>
+          <circle cx="8" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="6.8" cy="10" r="1.2" fill="#0f172a"/>
+          <circle cx="16" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="14.8" cy="10" r="1.2" fill="#0f172a"/>
+        </svg>
+      </div>
+
+      <!-- Clyde (Orange Ghost) -->
+      <div class="ghost-svg ghost-clyde">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C7 2 3 6 3 11v11l3-3 3 3 3-3 3 3V11c0-5-4-9-9-9z" fill="#fb923c"/>
+          <circle cx="8" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="9.2" cy="10" r="1.2" fill="#0f172a"/>
+          <circle cx="16" cy="10" r="2.5" fill="#ffffff"/>
+          <circle cx="17.2" cy="10" r="1.2" fill="#0f172a"/>
+        </svg>
+      </div>
+
+      <!-- Bonus Cherry Fruit -->
+      <div class="arcade-fruit">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="8" cy="17" r="5" fill="#ef4444"/>
+          <circle cx="16" cy="16" r="5" fill="#ef4444"/>
+          <path d="M8 12 Q12 4 17 3" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M16 11 Q14 6 17 3" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-  .pacman-arcade-banner {
+  .blurred-arcade-layer {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 38px;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
-    z-index: 20;
+    z-index: 1;
     overflow: hidden;
-    background: linear-gradient(to top, rgba(8, 10, 15, 0.85), transparent);
-    border-bottom: 1px solid rgba(239, 68, 68, 0.25);
   }
 
+  /* Frosted arcade ambient filter */
+  .arcade-frosted-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(8, 10, 15, 0.4), rgba(8, 10, 15, 0.85));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Track positions */
   .arcade-track {
-    position: relative;
+    position: absolute;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 40px;
     display: flex;
     align-items: center;
   }
+  .track-mid {
+    top: 38%;
+    opacity: 0.7;
+  }
+  .track-bottom {
+    top: 78%;
+    opacity: 0.6;
+  }
 
-  /* Dots Row */
-  .dots-row {
+  /* Dots */
+  .dots-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
   .arcade-dot {
     width: 6px;
@@ -78,149 +144,143 @@
     border-radius: 50%;
     transition: opacity 0.15s ease, transform 0.15s ease;
   }
-  .arcade-dot.dot-red {
+  .dot-red {
     background: #ef4444;
-    box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
   }
-  .arcade-dot.dot-blue {
+  .dot-blue {
     background: #3b82f6;
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
   }
   .arcade-dot.eaten {
     opacity: 0;
-    transform: scale(0.2);
+    transform: scale(0.1);
   }
 
-  /* Runner group */
-  .chaser-runner {
+  /* Runner animation */
+  .chaser-group {
     position: absolute;
     top: 50%;
-    left: -120px;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
-    gap: 12px;
-    animation: run-across 14s linear infinite;
+    gap: 16px;
     will-change: transform;
   }
-
-  @keyframes run-across {
-    0% {
-      left: -140px;
-    }
-    100% {
-      left: calc(100% + 40px);
-    }
+  .runner-mid {
+    left: -160px;
+    animation: run-mid 16s linear infinite;
+  }
+  .runner-bottom {
+    right: -160px;
+    animation: run-bottom 20s linear infinite;
   }
 
-  /* Pac-Man CSS Mouth Chomp */
-  .pacman-character {
-    width: 24px;
-    height: 24px;
-    position: relative;
-    background: #fbbf24;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(251, 191, 36, 0.9);
+  @keyframes run-mid {
+    0% { left: -160px; }
+    100% { left: calc(100% + 40px); }
+  }
+  @keyframes run-bottom {
+    0% { right: -160px; }
+    100% { right: calc(100% + 40px); }
   }
 
-  .pacman-mouth {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+  /* Authentic SVG Pac-Man Mouth Animation */
+  .pacman-svg-wrap {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.9));
+  }
+  .pacman-svg {
+    overflow: visible;
+  }
+  .jaw {
+    transform-origin: 16px 16px;
+  }
+  .jaw-top {
+    animation: mouth-top 0.22s ease-in-out infinite alternate;
+  }
+  .jaw-bottom {
+    animation: mouth-bottom 0.22s ease-in-out infinite alternate;
   }
 
-  .pacman-mouth::before,
-  .pacman-mouth::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
-
-  .pacman-mouth::before {
-    top: 0;
-    border-width: 12px 12px 0 0;
-    border-color: #080a0f transparent transparent transparent;
-    animation: chomp-top 0.25s ease-in-out infinite alternate;
-  }
-
-  .pacman-mouth::after {
-    bottom: 0;
-    border-width: 0 12px 12px 0;
-    border-color: transparent transparent #080a0f transparent;
-    animation: chomp-bottom 0.25s ease-in-out infinite alternate;
-  }
-
-  @keyframes chomp-top {
+  @keyframes mouth-top {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(-35deg); }
   }
-
-  @keyframes chomp-bottom {
+  @keyframes mouth-bottom {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(35deg); }
   }
 
-  /* Ghosts Floating Animation */
-  .ghost-character {
+  /* Ghosts */
+  .ghost-svg {
     display: flex;
     align-items: center;
-    animation: ghost-bob 0.6s ease-in-out infinite alternate;
+    animation: ghost-float 0.8s ease-in-out infinite alternate;
+  }
+  @keyframes ghost-float {
+    0% { transform: translateY(-3px); }
+    100% { transform: translateY(3px); }
   }
 
-  @keyframes ghost-bob {
-    0% { transform: translateY(-2px); }
-    100% { transform: translateY(2px); }
-  }
+  .ghost-blinky svg { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.85)); }
+  .ghost-inky svg { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.85)); }
+  .ghost-pinky svg { filter: drop-shadow(0 0 8px rgba(244, 114, 182, 0.85)); }
+  .ghost-clyde svg { filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.85)); }
 
-  .ghost-blinky svg {
-    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+  .arcade-fruit svg {
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.9));
+    animation: fruit-bounce 1s ease-in-out infinite alternate;
   }
-  .ghost-inky svg {
-    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+  @keyframes fruit-bounce {
+    0% { transform: translateY(-2px) rotate(-5deg); }
+    100% { transform: translateY(2px) rotate(5deg); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pacman-arcade-banner { display: none; }
+    .blurred-arcade-layer { display: none; }
   }
 </style>
 
 <script is:inline>
   (function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    
-    var dots = document.querySelectorAll('.arcade-dot');
-    var runner = document.querySelector('.chaser-runner');
-    if (!runner || !dots.length) return;
 
-    function checkEating() {
-      var runnerRect = runner.getBoundingClientRect();
-      var pacmanX = runnerRect.left + 24;
+    var tracks = document.querySelectorAll('.arcade-track');
+    if (!tracks.length) return;
 
-      dots.forEach(function (dot) {
-        var dotRect = dot.getBoundingClientRect();
-        if (dotRect.left <= pacmanX && !dot.classList.contains('eaten')) {
-          dot.classList.add('eaten');
-        }
+    tracks.forEach(function (track) {
+      var dots = track.querySelectorAll('.arcade-dot');
+      var runner = track.querySelector('.chaser-group');
+      if (!runner || !dots.length) return;
+
+      function checkEating() {
+        var runnerRect = runner.getBoundingClientRect();
+        var pacmanX = runnerRect.left + 30;
+
+        dots.forEach(function (dot) {
+          var dotRect = dot.getBoundingClientRect();
+          if (dotRect.left <= pacmanX && !dot.classList.contains('eaten')) {
+            dot.classList.add('eaten');
+          }
+        });
+      }
+
+      runner.addEventListener('animationiteration', function () {
+        dots.forEach(function (dot) {
+          dot.classList.remove('eaten');
+        });
       });
-    }
 
-    // Reset dots when runner loops back to start
-    runner.addEventListener('animationiteration', function () {
-      dots.forEach(function (dot) {
-        dot.classList.remove('eaten');
-      });
-    });
-
-    // Check collision frame-by-frame
-    function loop() {
-      checkEating();
+      function loop() {
+        checkEating();
+        requestAnimationFrame(loop);
+      }
       requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
+    });
   })();
 </script>
