@@ -15,12 +15,6 @@ const nav = [
         <a href={item.href} class="nav-item">{item.label}</a>
       ))}
 
-      <!-- Arcade Mode Toggle Badge -->
-      <button id="arcade-toggle-btn" class="arcade-badge" aria-label="Open Arcade Mode" title="Play Retro Arcade Easter Egg">
-        <span class="badge-tag">1UP</span>
-        <span class="badge-icon">🎮</span>
-      </button>
-
       <!-- GitHub link -->
       <a class="nav-icon" href="https://github.com/ynshvrh" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -77,34 +71,6 @@ const nav = [
     background: var(--surface-hover);
   }
 
-  /* Arcade Toggle Badge */
-  .arcade-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--accent-soft);
-    background: rgba(239, 68, 68, 0.12);
-    border: 1px solid rgba(239, 68, 68, 0.35);
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .arcade-badge:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.5);
-    color: #ffffff;
-    box-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
-    transform: translateY(-1px);
-  }
-  .badge-tag {
-    color: #fbbf24;
-    font-weight: 800;
-  }
-
   .nav-icon {
     display: inline-grid;
     place-items: center;
@@ -125,15 +91,3 @@ const nav = [
     .nav-item { padding: 0.4rem 0.6rem; }
   }
 </style>
-
-<script is:inline>
-  (function () {
-    var btn = document.getElementById('arcade-toggle-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      if (typeof window.openArcadeModal === 'function') {
-        window.openArcadeModal();
-      }
-    });
-  })();
-</script>
