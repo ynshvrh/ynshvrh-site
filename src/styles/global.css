@@ -212,22 +212,6 @@ strong { color: inherit; font-weight: 600; }
   -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
 }
 
-/* ---------- Ambient layer 2: bioluminescent cursor glow ---------- */
-.cursor-glow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 480px; height: 480px;
-  margin: -240px 0 0 -240px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 2;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(59, 130, 246, 0.10) 45%, transparent 70%);
-  transform: translate(var(--mx, -9999px), var(--my, -9999px));
-  opacity: 0;
-  transition: opacity 0.7s ease;
-}
-body.has-cursor .cursor-glow { opacity: 1; }
-
 /* ---------- Ambient particles: floating cyber micro-sparks ---------- */
 .sparks {
   position: fixed;
@@ -294,6 +278,5 @@ body.has-cursor .cursor-glow { opacity: 1; }
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .sparks, .glow, .cyber-grid { display: none; }
-  .cursor-glow { display: none; }
   .reveal-init { opacity: 1; transform: none; }
 }
