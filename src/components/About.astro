@@ -1,11 +1,38 @@
 ---
 const dossier = [
-  { k: 'Role',        v: 'Backend & Software Engineer' },
-  { k: 'Backend',     v: 'C# (.NET) · Go (Golang)' },
-  { k: 'Frontend',    v: 'Angular · Vue.js · TypeScript' },
+  { k: 'Role',        v: 'Software Engineer' },
+  { k: 'Backend',     v: 'Go (Golang) · C# (.NET) · TypeScript' },
+  { k: 'Frontend',    v: 'Vue.js · Angular' },
   { k: 'Databases',   v: 'PostgreSQL · MongoDB · SQLite' },
-  { k: 'Location',    v: 'Kyiv / Ukraine' },
+  { k: 'Location',    v: 'Kyiv, Ukraine (Open to remote)' },
   { k: 'Status',      v: 'Open to work' },
+];
+
+const vectors = [
+  {
+    tag: 'Go',
+    badgeClass: 'badge-go',
+    status: 'Deepening',
+    desc: 'Concurrency patterns, distributed systems, networking & high-performance applications',
+  },
+  {
+    tag: 'TypeScript',
+    badgeClass: 'badge-ts',
+    status: 'Active',
+    desc: 'Full-stack application development, reactive web interfaces & developer tooling',
+  },
+  {
+    tag: 'Rust',
+    badgeClass: 'badge-rust',
+    status: 'Exploring',
+    desc: 'Systems programming, memory safety, CLI utilities & performance-critical software',
+  },
+  {
+    tag: 'Kotlin',
+    badgeClass: 'badge-kotlin',
+    status: 'Exploring',
+    desc: 'Multiplatform development (KMP), cross-platform logic & expressive modern applications',
+  },
 ];
 ---
 
@@ -16,16 +43,24 @@ const dossier = [
     <div class="about-grid">
       <div class="about-copy">
         <p>
-          I am a software engineer focused on building robust, scalable backends and clean APIs.
-          My primary strengths are <strong>C# (.NET 10)</strong> and <strong>Go (Golang)</strong>, with EF Core, Minimal APIs, and high-concurrency microservices.
+          I am a software engineer focused on building robust, scalable backends and reliable APIs. 
+          My primary daily focus is <strong>Go (Golang)</strong> — designing clean microservices, concurrency patterns, 
+          and production-ready REST services.
         </p>
         <p>
-          I also bring practical client-side experience with Angular and Vue 3, ensuring seamless 
-          end-to-end full-stack integration when needed. Based in Kyiv, Ukraine, and actively looking for my next role.
+          I bring a solid foundation in <strong>C# (.NET 10)</strong>, spanning enterprise Minimal APIs, EF Core, 
+          SignalR real-time messaging, and GraphQL, alongside backend services with <strong>TypeScript</strong>.
+        </p>
+        <p>
+          On the frontend, I comfortably bridge the gap with <strong>Vue.js</strong> and <strong>Angular</strong>, 
+          delivering coherent end-to-end applications.
         </p>
       </div>
 
       <aside class="dossier glowing-card">
+        <div class="card-topline">
+          <span class="dossier-label tag-terminal">// PROFILE_DOSSIER</span>
+        </div>
         <dl>
           {dossier.map((row) => (
             <>
@@ -36,43 +71,76 @@ const dossier = [
         </dl>
       </aside>
     </div>
+
+    <!-- Currently Exploring & Future Vectors -->
+    <div class="vectors-box glowing-card">
+      <div class="vectors-head">
+        <div class="terminal-dots" aria-hidden="true">
+          <span class="dot dot-close"></span>
+          <span class="dot dot-minimize"></span>
+          <span class="dot dot-maximize"></span>
+        </div>
+        <span class="vectors-title tag-terminal">~/interests/current-vectors.json</span>
+      </div>
+
+      <div class="vectors-grid">
+        {vectors.map((item) => (
+          <div class="vector-item">
+            <div class="vector-meta">
+              <span class={`vector-tag ${item.badgeClass}`}>{item.tag}</span>
+              <span class="vector-status tag-terminal">{item.status}</span>
+            </div>
+            <p class="vector-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 2.25rem;
     align-items: start;
     margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .about-copy p {
     max-width: 58ch;
     color: var(--text-dim);
     line-height: 1.75;
-    margin: 0 0 1rem;
+    margin: 0 0 1.2rem;
     font-size: 1.02rem;
   }
   .about-copy strong {
-    color: var(--accent-soft);
+    color: var(--text);
     font-weight: 600;
   }
 
   .dossier {
     border-radius: 16px;
     padding: 1.5rem 1.75rem;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     box-shadow: var(--card-shadow);
+  }
+  .card-topline {
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .dossier-label {
+    font-size: 0.72rem;
+    color: var(--accent-secondary-soft);
+    font-weight: 600;
   }
   .dossier dl {
     margin: 0;
     display: grid;
     grid-template-columns: max-content 1fr;
     column-gap: 1.5rem;
-    row-gap: 0.8rem;
+    row-gap: 0.85rem;
   }
   .dossier dt {
     color: var(--text-mute);
@@ -89,7 +157,102 @@ const dossier = [
     font-weight: 500;
   }
 
+  /* Vectors Terminal Box */
+  .vectors-box {
+    border-radius: 16px;
+    padding: 1.35rem 1.6rem;
+    box-shadow: var(--card-shadow);
+    margin-top: 1rem;
+  }
+  .vectors-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .terminal-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .terminal-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .dot-close { background: #ef4444; opacity: 0.8; }
+  .dot-minimize { background: #f59e0b; opacity: 0.8; }
+  .dot-maximize { background: #10b981; opacity: 0.8; }
+
+  .vectors-title {
+    color: var(--text-mute);
+    font-size: 0.8rem;
+  }
+
+  .vectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .vector-item {
+    background: rgba(168, 85, 247, 0.03);
+    border: 1px solid rgba(168, 85, 247, 0.12);
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .vector-item:hover {
+    background: rgba(168, 85, 247, 0.07);
+    border-color: rgba(168, 85, 247, 0.3);
+  }
+  .vector-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.45rem;
+  }
+  .vector-tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+  }
+  .badge-go {
+    color: #00add8;
+    background: rgba(0, 173, 216, 0.12);
+    border: 1px solid rgba(0, 173, 216, 0.3);
+  }
+  .badge-ts {
+    color: #3178c6;
+    background: rgba(49, 120, 198, 0.12);
+    border: 1px solid rgba(49, 120, 198, 0.3);
+  }
+  .badge-rust {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  .badge-kotlin {
+    color: #c084fc;
+    background: rgba(192, 132, 252, 0.12);
+    border: 1px solid rgba(192, 132, 252, 0.3);
+  }
+
+  .vector-status {
+    color: var(--text-mute);
+    font-size: 0.72rem;
+  }
+  .vector-desc {
+    font-size: 0.86rem;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.5;
+  }
+
   @media (max-width: 820px) {
     .about-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    .vectors-grid { grid-template-columns: 1fr; }
   }
 </style>

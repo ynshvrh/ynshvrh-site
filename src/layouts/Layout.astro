@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import PacmanArcade from '../components/PacmanArcade.astro';
 
 interface Props {
   title?: string;
@@ -10,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'Yanosh — Backend & Software Engineer',
-  description = 'Personal site of Yanosh (Janos) — software engineer open to work. Specializing in C# (.NET) and Go (Golang) backend development. Based in Kyiv.',
+  title = 'Yanosh — Software Engineer | Go & C#',
+  description = 'Personal site of Yanosh — Software Engineer focused on Go, with a solid background in C#. Based in Kyiv, open to work.',
 } = Astro.props;
 ---
 
@@ -26,19 +25,16 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
   </head>
   <body>
-    <!-- Ambient Depth: dual aurora glows, cyber grid pattern -->
-    <div class="glow" aria-hidden="true"></div>
+    <!-- Ambient Depth: hardware-accelerated ambient glow & cyber grid -->
+    <div class="ambient-glow" aria-hidden="true"></div>
     <div class="cyber-grid" aria-hidden="true"></div>
-
-    <!-- Pac-Man & Ghost Retro Arcade Track -->
-    <PacmanArcade />
 
     <Header />
     <main>

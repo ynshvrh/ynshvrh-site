@@ -5,21 +5,22 @@
   <div class="container hero-wrap">
     <a href="#contact" class="open-badge">
       <span class="open-dot" aria-hidden="true"></span>
-      Open to work
+      Open to work · Remote / Kyiv
     </a>
 
-    <p class="hi">Hi, I am</p>
+    <p class="hi">Hi, I'm</p>
 
     <h1 class="title">
       <span class="name name-float">Yanosh</span>
     </h1>
 
-    <p class="tagline">Backend & Software Engineer</p>
+    <p class="tagline">
+      Software Engineer focused on <span class="highlight-go">Go</span>, with a solid background in <span class="highlight-cs">C#</span>
+    </p>
 
     <p class="lead">
-      Specializing in <strong>C# (.NET)</strong> and <strong>Go (Golang)</strong> backend architecture. 
-      Building scalable APIs, microservices, and reliable database systems — with production experience pairing 
-      frontends in Angular and Vue.js. Based in Kyiv, open to work.
+      Building backend services that actually ship — scalable REST APIs, payment & subscription-style architecture, 
+      and high-concurrency systems, along with modern full-stack web clients in Vue.js and Angular.
     </p>
 
     <div class="cta-row">
@@ -30,35 +31,35 @@
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
     </div>
 
-    <div class="stack-grid" aria-label="Core Tech Stacks">
+    <div class="stack-grid" aria-label="Tech Stacks">
       <div class="stack-card glowing-card">
         <div class="card-header-row">
-          <h3 class="stack-title">Core Backend Stack</h3>
-          <div class="tech-icons">
-            <!-- C# icon -->
-            <svg class="tech-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" title="C#">
-              <path d="M16 18c-3.866 0-7-3.134-7-7s3.134-7 7-7" />
-              <path d="M12 9h8M12 13h8M14 7v8M18 7v8" />
-            </svg>
-          </div>
-        </div>
-        <p class="stack-pair">C# (.NET 10)</p>
-        <p class="stack-desc">Enterprise backend architecture, Minimal APIs, EF Core, JWT auth & clean domain design. (Paired with Angular on frontend)</p>
-      </div>
-
-      <div class="stack-card glowing-card">
-        <div class="card-header-row">
-          <h3 class="stack-title">Core Backend Stack</h3>
+          <span class="stack-category tag-terminal">Primary Backend Focus</span>
           <div class="tech-icons">
             <!-- Go icon -->
-            <svg class="tech-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" title="Go">
+            <svg class="tech-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" title="Go">
               <path d="M18 11h-6v2h4.5A5.5 5.5 0 1 1 12 6.5" />
               <path d="M2 9h3M2 13h2M2 17h4" />
             </svg>
           </div>
         </div>
-        <p class="stack-pair">Go (Golang)</p>
-        <p class="stack-desc">High-performance microservices, concurrency, lightweight REST APIs & GORM. (Paired with Vue 3 on frontend)</p>
+        <h3 class="stack-pair">Go (Golang)</h3>
+        <p class="stack-desc">High-performance microservices, concurrency patterns, lightweight REST APIs, Gin & GORM. (Paired with Vue 3 on frontend)</p>
+      </div>
+
+      <div class="stack-card glowing-card">
+        <div class="card-header-row">
+          <span class="stack-category tag-terminal">Solid Background</span>
+          <div class="tech-icons">
+            <!-- C# icon -->
+            <svg class="tech-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" title="C#">
+              <path d="M16 18c-3.866 0-7-3.134-7-7s3.134-7 7-7" />
+              <path d="M12 9h8M12 13h8M14 7v8M18 7v8" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="stack-pair">C# (.NET 10)</h3>
+        <p class="stack-desc">Enterprise backend architecture, Minimal APIs, EF Core, SignalR real-time messaging, JWT auth & clean domain design. (Paired with Angular)</p>
       </div>
     </div>
   </div>
@@ -66,12 +67,12 @@
 
 <style>
   .hero {
-    padding-top: 4rem;
+    padding-top: 4.5rem;
     padding-bottom: 4rem;
   }
 
   .hero-wrap {
-    max-width: 760px;
+    max-width: 780px;
     margin: 0 auto;
     text-align: center;
   }
@@ -80,48 +81,50 @@
   .open-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.85rem 0.35rem 0.7rem;
-    margin: 0 auto 1.4rem;
+    gap: 0.55rem;
+    padding: 0.4rem 0.95rem;
+    margin: 0 auto 1.5rem;
     border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-soft);
-    background: rgba(239, 68, 68, 0.12);
-    border: 1px solid rgba(239, 68, 68, 0.35);
-    box-shadow: 0 0 16px -4px rgba(239, 68, 68, 0.3);
+    font-size: 0.82rem;
+    font-family: var(--mono);
+    font-weight: 500;
+    color: var(--accent-secondary-soft);
+    background: var(--amber-tint);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    box-shadow: 0 0 16px -4px rgba(245, 158, 11, 0.3);
     transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
   .open-badge:hover {
-    color: var(--accent-soft);
-    background: rgba(239, 68, 68, 0.22);
-    box-shadow: 0 0 20px -2px rgba(239, 68, 68, 0.5);
+    color: var(--accent-secondary-soft);
+    background: var(--amber-tint-strong);
+    box-shadow: 0 0 20px -2px rgba(245, 158, 11, 0.5);
     transform: translateY(-1px);
   }
   .open-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: var(--accent-soft);
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+    background: var(--accent-secondary);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
     animation: open-pulse 2s infinite;
   }
   @keyframes open-pulse {
-    0%   { box-shadow: 0 0 0 0   rgba(239, 68, 68, 0.6); }
-    70%  { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);   }
-    100% { box-shadow: 0 0 0 0   rgba(239, 68, 68, 0);   }
+    0%   { box-shadow: 0 0 0 0   rgba(245, 158, 11, 0.7); }
+    70%  { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);   }
+    100% { box-shadow: 0 0 0 0   rgba(245, 158, 11, 0);   }
   }
 
   .hi {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-mute);
-    margin: 0 0 0.85rem;
-    letter-spacing: 0.04em;
+    margin: 0 0 0.75rem;
+    letter-spacing: 0.05em;
+    font-family: var(--mono);
   }
 
   .title {
-    font-size: clamp(2.8rem, 8vw, 5.4rem);
+    font-size: clamp(2.8rem, 8vw, 5.2rem);
     line-height: 1;
-    margin: 0 0 1rem;
+    margin: 0 0 1.1rem;
     letter-spacing: -0.03em;
     font-weight: 800;
   }
@@ -134,40 +137,45 @@
     color: transparent;
   }
   .name-float {
-    animation: name-float 12s ease-in-out infinite;
+    animation: name-float 10s ease-in-out infinite;
     will-change: transform;
   }
   @keyframes name-float {
-    0%, 100% { transform: translate(0, 0)        rotate(0deg);     }
-    33%      { transform: translate(1px, -3px)   rotate(-0.25deg); }
-    66%      { transform: translate(-1px, -2px)  rotate(0.25deg);  }
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translateY(-4px); }
   }
 
   .tagline {
-    font-size: 1.15rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
     color: var(--text);
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.4rem;
     font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .highlight-go {
+    color: var(--accent-soft);
+    font-weight: 700;
+  }
+  .highlight-cs {
+    color: var(--accent-secondary-soft);
+    font-weight: 700;
   }
 
   .lead {
     font-size: 1.05rem;
     color: var(--text-dim);
-    max-width: 620px;
-    margin: 0 auto 2rem;
+    max-width: 640px;
+    margin: 0 auto 2.25rem;
     line-height: 1.7;
-  }
-  .lead strong {
-    color: var(--accent);
-    font-weight: 600;
   }
 
   .cta-row {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.85rem;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 3.25rem;
   }
 
   /* Core Stacks Cards Grid */
@@ -175,13 +183,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .stack-card {
     border-radius: 16px;
-    padding: 1.25rem 1.5rem;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    padding: 1.35rem 1.6rem;
     box-shadow: var(--card-shadow);
     text-align: left;
   }
@@ -192,46 +198,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
   .tech-icons {
     display: flex;
     gap: 0.6rem;
-    color: var(--text-mute);
   }
   .tech-icon {
-    opacity: 0.7;
-    color: var(--accent);
-    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    color: var(--accent-soft);
+    transition: color 0.25s ease, transform 0.25s ease;
   }
   .stack-card:hover .tech-icon {
-    color: var(--accent-soft);
-    opacity: 1;
-    transform: scale(1.1);
+    color: var(--accent-secondary-soft);
+    transform: scale(1.12);
   }
-  .stack-title {
+  .stack-category {
     font-size: 0.72rem;
     font-weight: 600;
     color: var(--text-mute);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin: 0;
+    letter-spacing: 0.06em;
   }
   .stack-pair {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--text);
     margin: 0 0 0.5rem;
     letter-spacing: -0.01em;
   }
   .stack-desc {
     font-size: 0.88rem;
     color: var(--text-dim);
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .stack-grid {
       grid-template-columns: 1fr;
     }
