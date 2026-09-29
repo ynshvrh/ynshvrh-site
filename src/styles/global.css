@@ -1,44 +1,46 @@
 /*
- * Single Theme — "Crimson & Sapphire":
- * A high-tech obsidian dark palette (#080a0f) featuring electric crimson red (#ef4444)
- * and sapphire blue (#3b82f6) accents, glassmorphism cards with gradient borders,
- * cyber-grid overlay, centered section headers, and floating micro-sparks.
+ * Cyber Amethyst & Warm Amber Theme:
+ * An obsidian dark palette (#09090f) featuring electric violet (#a855f7)
+ * and warm amber/gold (#f59e0b) accents, frosted glassmorphism cards with
+ * dual-gradient borders, ultra-performant hardware-accelerated ambient glows,
+ * and a subtle cyber-grid matrix.
  */
 
 :root {
-  --bg:                #080a0f;
-  --bg-gradient:
-    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(239, 68, 68, 0.22), transparent 65%),
-    radial-gradient(ellipse 60% 45% at 100% 45%, rgba(59, 130, 246, 0.20), transparent 65%),
-    radial-gradient(ellipse 50% 40% at 0% 90%,   rgba(239, 68, 68, 0.12), transparent 65%),
-    #080a0f;
-  --header-bg:         rgba(8, 10, 15, 0.75);
+  --bg:                     #09090f;
+  --bg-gradient:            #09090f;
+  --header-bg:              rgba(9, 9, 15, 0.82);
 
-  --text:              #f1f5f9;
-  --text-dim:          #94a3b8;
-  --text-mute:         #64748b;
+  --text:                   #f3f4f6;
+  --text-dim:               #9ca3af;
+  --text-mute:              #6b7280;
 
-  --accent:            #ef4444; /* Electric Crimson Red */
-  --accent-soft:       #f87171;
-  --accent-secondary:  #3b82f6; /* Electric Sapphire Blue */
-  --accent-secondary-soft: #60a5fa;
+  --accent:                 #a855f7; /* Electric Amethyst / Violet */
+  --accent-soft:            #c084fc;
+  --accent-dark:            #7e22ce;
 
-  --accent-tint:       rgba(239, 68, 68, 0.12);
-  --accent-tint-strong:rgba(239, 68, 68, 0.22);
-  --blue-tint:         rgba(59, 130, 246, 0.14);
+  --accent-secondary:       #f59e0b; /* Warm Amber / Gold */
+  --accent-secondary-soft:  #fbbf24;
+  --accent-secondary-dark:  #d97706;
 
-  --card:              rgba(15, 23, 42, 0.65);
-  --card-shadow:       0 18px 50px -28px rgba(0, 0, 0, 0.9),
-                       inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  --card-shadow-hover: 0 26px 70px -25px rgba(239, 68, 68, 0.4),
-                       0 0 35px -10px rgba(59, 130, 246, 0.35),
-                       inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --accent-tint:            rgba(168, 85, 247, 0.12);
+  --accent-tint-strong:     rgba(168, 85, 247, 0.22);
+  --amber-tint:             rgba(245, 158, 11, 0.12);
+  --amber-tint-strong:      rgba(245, 158, 11, 0.22);
 
-  --surface:           rgba(239, 68, 68, 0.06);
-  --surface-hover:     rgba(239, 68, 68, 0.14);
-  --line:              rgba(239, 68, 68, 0.2);
+  --card:                   rgba(16, 17, 28, 0.68);
+  --card-shadow:            0 18px 50px -28px rgba(0, 0, 0, 0.95),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --card-shadow-hover:      0 26px 70px -25px rgba(168, 85, 247, 0.35),
+                            0 0 35px -10px rgba(245, 158, 11, 0.22),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.15);
 
-  --name-gradient:     linear-gradient(115deg, #f87171 0%, #ef4444 35%, #3b82f6 70%, #60a5fa 100%);
+  --surface:                rgba(168, 85, 247, 0.06);
+  --surface-hover:          rgba(168, 85, 247, 0.14);
+  --line:                   rgba(168, 85, 247, 0.18);
+  --line-amber:             rgba(245, 158, 11, 0.22);
+
+  --name-gradient:          linear-gradient(120deg, #c084fc 0%, #a855f7 35%, #f59e0b 70%, #fbbf24 100%);
 
   color-scheme: dark;
 }
@@ -70,8 +72,6 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  background: var(--bg-gradient);
-  background-attachment: fixed;
 }
 
 main, header, footer { position: relative; z-index: 3; }
@@ -132,15 +132,27 @@ strong { color: inherit; font-weight: 600; }
               background 0.2s ease, box-shadow 0.3s ease;
 }
 .btn-primary {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
   color: #ffffff;
-  box-shadow: 0 10px 24px -10px rgba(239, 68, 68, 0.7);
+  box-shadow: 0 10px 24px -10px rgba(168, 85, 247, 0.7);
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px -8px rgba(239, 68, 68, 0.85);
+  box-shadow: 0 14px 30px -8px rgba(168, 85, 247, 0.85);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #09090f;
+  font-weight: 700;
+  box-shadow: 0 10px 24px -10px rgba(245, 158, 11, 0.7);
+}
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -8px rgba(245, 158, 11, 0.85);
 }
 
 .btn-ghost {
@@ -156,127 +168,72 @@ strong { color: inherit; font-weight: 600; }
 }
 
 /* ---------- Selection + scrollbar ---------- */
-::selection { background: rgba(239, 68, 68, 0.3); color: #ffffff; }
+::selection { background: rgba(168, 85, 247, 0.35); color: #ffffff; }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: rgba(239, 68, 68, 0.3); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.3); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* ---------- Ambient layer 0: drifting aurora glows ---------- */
-.glow {
+/* ---------- Ambient Depth Layer (Zero-lag native radial gradients) ---------- */
+.ambient-glow {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
-}
-.glow::before,
-.glow::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-}
-.glow::before {
-  width: 62vw; height: 52vh;
-  top: -22vh; left: 16vw;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.22), transparent 70%);
-  animation: glow-a 24s ease-in-out infinite;
-}
-.glow::after {
-  width: 52vw; height: 45vh;
-  bottom: -14vh; right: 8vw;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.20), transparent 70%);
-  animation: glow-b 30s ease-in-out infinite;
-}
-@keyframes glow-a {
-  0%, 100% { transform: translate(0, 0)        scale(1);    opacity: 0.75; }
-  50%      { transform: translate(4vw, 3vh)    scale(1.14); opacity: 1;    }
-}
-@keyframes glow-b {
-  0%, 100% { transform: translate(0, 0)        scale(1);    opacity: 0.65; }
-  50%      { transform: translate(-3vw, -2vh)  scale(1.12); opacity: 0.95; }
+  background:
+    radial-gradient(circle 850px at 50% -120px, rgba(168, 85, 247, 0.18), transparent 70%),
+    radial-gradient(circle 650px at 100% 40%, rgba(245, 158, 11, 0.09), transparent 60%),
+    radial-gradient(circle 550px at 0% 85%, rgba(168, 85, 247, 0.11), transparent 65%);
 }
 
-/* ---------- Cyber Grid Background Pattern ---------- */
+/* ---------- Cyber Grid Matrix Background ---------- */
 .cyber-grid {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
   background-image: 
-    linear-gradient(to right, rgba(239, 68, 68, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(239, 68, 68, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 80%);
+    linear-gradient(to right, rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 50% 35%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 35%, black 25%, transparent 85%);
 }
 
-/* ---------- Ambient particles: floating cyber micro-sparks ---------- */
-.sparks {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-.sparks span {
-  position: absolute;
-  bottom: -20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-soft) 0%, var(--accent-secondary-soft) 100%);
-  box-shadow: 0 0 8px var(--accent-soft);
-  animation: spark-rise linear infinite;
-  opacity: 0;
-}
-.sparks span:nth-child(1)  { left:  6%; width: 3px; height: 3px; animation-duration: 18s; animation-delay:  -1s; }
-.sparks span:nth-child(2)  { left: 15%; width: 5px; height: 5px; animation-duration: 24s; animation-delay:  -5s; }
-.sparks span:nth-child(3)  { left: 24%; width: 3px; height: 3px; animation-duration: 16s; animation-delay:  -9s; }
-.sparks span:nth-child(4)  { left: 32%; width: 4px; height: 4px; animation-duration: 22s; animation-delay: -13s; }
-.sparks span:nth-child(5)  { left: 40%; width: 3px; height: 3px; animation-duration: 20s; animation-delay:  -3s; }
-.sparks span:nth-child(6)  { left: 48%; width: 6px; height: 6px; animation-duration: 28s; animation-delay: -11s; }
-.sparks span:nth-child(7)  { left: 56%; width: 3px; height: 3px; animation-duration: 19s; animation-delay:  -7s; }
-.sparks span:nth-child(8)  { left: 64%; width: 4px; height: 4px; animation-duration: 26s; animation-delay: -15s; }
-.sparks span:nth-child(9)  { left: 72%; width: 3px; height: 3px; animation-duration: 17s; animation-delay:  -2s; }
-.sparks span:nth-child(10) { left: 80%; width: 5px; height: 5px; animation-duration: 30s; animation-delay: -19s; }
-.sparks span:nth-child(11) { left: 88%; width: 3px; height: 3px; animation-duration: 21s; animation-delay:  -6s; }
-.sparks span:nth-child(12) { left: 95%; width: 4px; height: 4px; animation-duration: 25s; animation-delay: -14s; }
-
-@keyframes spark-rise {
-  0%   { transform: translateY(0)     translateX(0)   scale(0.8); opacity: 0; }
-  15%  { opacity: 0.8; }
-  50%  { transform: translateY(-55vh) translateX(12px) scale(1.2); }
-  85%  { opacity: 0.5; }
-  100% { transform: translateY(-115vh) translateX(-8px) scale(0.6); opacity: 0; }
-}
-
-/* ---------- Glowing Cards (Frosted Obsidian Glass + Gradient Borders) ---------- */
+/* ---------- Glowing Cards (Frosted Obsidian Glass + Cyber Gradient Borders) ---------- */
 .glowing-card {
   background: 
-    linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(11, 15, 25, 0.82)) padding-box, 
-    linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(59, 130, 246, 0.25)) border-box !important;
+    linear-gradient(135deg, rgba(16, 17, 28, 0.78), rgba(11, 12, 20, 0.88)) padding-box, 
+    linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(245, 158, 11, 0.24)) border-box !important;
   border: 1px solid transparent !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
 }
 .glowing-card:hover {
   background: 
-    linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(11, 15, 25, 0.92)) padding-box, 
+    linear-gradient(135deg, rgba(18, 19, 32, 0.88), rgba(13, 14, 24, 0.96)) padding-box, 
     linear-gradient(135deg, var(--accent-soft), var(--accent-secondary-soft)) border-box !important;
   box-shadow: var(--card-shadow-hover) !important;
 }
 
+/* ---------- Monospace Terminal Tag / Badge ---------- */
+.tag-terminal {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
 /* ---------- Scroll reveal ---------- */
-.reveal-init { opacity: 0; transform: translateY(18px); will-change: opacity, transform; }
+.reveal-init { opacity: 0; transform: translateY(16px); will-change: opacity, transform; }
 .reveal-in {
   opacity: 1;
   transform: none;
-  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .sparks, .glow, .cyber-grid { display: none; }
+  .ambient-glow, .cyber-grid { display: none; }
   .reveal-init { opacity: 1; transform: none; }
 }

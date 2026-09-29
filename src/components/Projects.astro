@@ -1,37 +1,28 @@
 ---
 const projects = [
   {
-    codename: 'V-Fridge',
-    desc: 'Food management with AI — track what you have and get smart cook suggestions. Web client, ASP.NET API, Flutter mobile.',
-    stack: ['TypeScript', 'C# / .NET', 'Flutter', 'AI'],
+    codename: 'E-Fridge',
+    badge: 'Featured · Flagship',
+    desc: 'AI-powered virtual food storage app — inventory tracking with expiry monitoring, smart AI recipe suggestions, automated shopping lists, and meal planning.',
+    stack: ['Go', 'Vue.js', 'PostgreSQL', 'JWT', 'Google OAuth', 'Docker'],
     status: 'active',
+    statusLabel: 'active dev',
     links: [
-      { label: 'Live',   href: 'https://v-fridge.vercel.app' },
-      { label: 'Web',    href: 'https://github.com/ynshvrh/V-Fridge' },
-      { label: 'API',    href: 'https://github.com/ynshvrh/v-fridge-api' },
-      { label: 'Mobile', href: 'https://github.com/ynshvrh/v-fridge-mobile' },
+      { label: 'Web Repository', href: 'https://github.com/ynshvrh/E-Fridge' },
+      { label: 'Backend API', href: 'https://github.com/ynshvrh/E-Fridge-Api' },
     ],
   },
   {
     codename: 'AkademVault',
-    desc: 'Student group coordination platform — real-time chat, file storage, and AI schedule parsing from a photo or PDF. Angular + Capacitor client, C# / .NET API. My bachelor thesis project.',
-    stack: ['Angular', 'Capacitor', 'C# / .NET', 'PostgreSQL', 'AI'],
+    badge: 'Diploma / Thesis Project',
+    desc: 'Student group management & coordination platform — real-time messenger with SignalR, cloud file storage, academic planner, and AI schedule parsing from photos or PDFs.',
+    stack: ['C# / .NET 10', 'ASP.NET Core', 'Angular', 'PostgreSQL', 'SignalR', 'GraphQL'],
     status: 'demo',
+    statusLabel: 'demo available',
     links: [
-      { label: 'Live', href: 'https://akademvault.pages.dev' },
-      { label: 'Web',  href: 'https://github.com/ynshvrh/AkademVault-Web' },
-      { label: 'API',  href: 'https://github.com/ynshvrh/AkademVault-API' },
-    ],
-  },
-  {
-    codename: 'WizAllet',
-    desc: 'Personal finance tracker. Vue 3 web client backed by a Go (Gin + GORM) API on Postgres. A finished portfolio case.',
-    stack: ['Vue 3', 'Go', 'Postgres'],
-    status: 'shipped',
-    links: [
-      { label: 'Live', href: 'https://wizallet.netlify.app' },
-      { label: 'Web',  href: 'https://github.com/ynshvrh/WizAllet' },
-      { label: 'API',  href: 'https://github.com/ynshvrh/wizallet-api' },
+      { label: 'Live Demo', href: 'https://akademvault.pages.dev' },
+      { label: 'Web Repository', href: 'https://github.com/ynshvrh/AkademVault-Web' },
+      { label: 'Backend API', href: 'https://github.com/ynshvrh/AkademVault-API' },
     ],
   },
 ];
@@ -41,7 +32,8 @@ const projects = [
   <div class="container">
     <div class="head">
       <h2 class="section-title">Projects</h2>
-      <a class="head-link" href="https://github.com/ynshvrh" target="_blank" rel="noopener noreferrer">
+      <p class="head-sub">Selected production and architectural showcases</p>
+      <a class="head-link tag-terminal" href="https://github.com/ynshvrh" target="_blank" rel="noopener noreferrer">
         github.com/ynshvrh ↗
       </a>
     </div>
@@ -50,28 +42,33 @@ const projects = [
       {projects.map((p) => (
         <article class="project glowing-card">
           <header class="proj-head">
-            <h3 class="codename">{p.codename}</h3>
+            <div>
+              <span class="proj-badge tag-terminal">{p.badge}</span>
+              <h3 class="codename">{p.codename}</h3>
+            </div>
             <span class={`status status-${p.status}`}>
               <span class="status-dot" aria-hidden="true"></span>
-              {p.status}
+              {p.statusLabel}
             </span>
           </header>
 
           <p class="proj-desc">{p.desc}</p>
 
-          <ul class="stack-list" aria-label="Stack">
-            {p.stack.map((s) => <li>{s}</li>)}
-          </ul>
+          <div class="proj-footer">
+            <ul class="stack-list" aria-label="Stack">
+              {p.stack.map((s) => <li>{s}</li>)}
+            </ul>
 
-          <ul class="link-list" aria-label="Links">
-            {p.links.map((l) => (
-              <li>
-                <a href={l.href} target="_blank" rel="noopener noreferrer">
-                  {l.label} <span aria-hidden="true">↗</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+            <ul class="link-list" aria-label="Links">
+              {p.links.map((l) => (
+                <li>
+                  <a href={l.href} target="_blank" rel="noopener noreferrer">
+                    {l.label} <span aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </article>
       ))}
     </div>
@@ -84,31 +81,45 @@ const projects = [
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
-    margin-bottom: 2.5rem;
+    gap: 0.35rem;
+    margin-bottom: 2.75rem;
     text-align: center;
   }
-  .head-link {
-    font-size: 0.9rem;
+  .head-sub {
+    font-size: 0.95rem;
     color: var(--text-dim);
+    margin: 0;
   }
-  .head-link:hover { color: var(--accent); }
+  .head-link {
+    font-size: 0.85rem;
+    color: var(--accent-secondary-soft);
+    margin-top: 0.35rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--amber-tint);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .head-link:hover {
+    background: var(--amber-tint-strong);
+    border-color: var(--accent-secondary);
+    color: #fff;
+    transform: translateY(-1px);
+  }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .project {
     border-radius: 16px;
-    padding: 1.5rem 1.75rem;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    padding: 1.75rem;
     box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
   }
   .project:hover {
     transform: translateY(-3px);
@@ -117,11 +128,17 @@ const projects = [
   .proj-head {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
   }
+  .proj-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: var(--accent-secondary-soft);
+    margin-bottom: 0.3rem;
+  }
   .codename {
-    font-size: 1.2rem;
+    font-size: 1.45rem;
     font-weight: 700;
     color: var(--text);
     margin: 0;
@@ -134,10 +151,12 @@ const projects = [
     gap: 0.4rem;
     font-size: 0.72rem;
     font-weight: 500;
+    font-family: var(--mono);
     text-transform: lowercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     padding: 0.25rem 0.7rem;
     border-radius: 999px;
+    white-space: nowrap;
   }
   .status-dot {
     width: 6px; height: 6px;
@@ -145,31 +164,32 @@ const projects = [
     background: currentColor;
   }
   .status-active {
-    color: var(--accent);
-    background: var(--accent-tint);
+    color: var(--accent-secondary-soft);
+    background: var(--amber-tint);
+    border: 1px solid rgba(245, 158, 11, 0.3);
   }
   .status-active .status-dot {
     animation: pulse 2s ease-in-out infinite;
   }
-  .status-prototype {
-    color: var(--text-mute);
-    background: var(--surface);
-  }
-  /* shipped = live but no longer actively developed (e.g. a portfolio case).
-     demo = a live showcase / thesis project, not a product in active dev.
-     Both are calm — accent-soft, no pulsing dot. */
-  .status-shipped,
   .status-demo {
     color: var(--accent-soft);
     background: var(--accent-tint);
+    border: 1px solid rgba(168, 85, 247, 0.3);
   }
   @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
 
   .proj-desc {
     color: var(--text-dim);
     margin: 0;
-    line-height: 1.6;
-    font-size: 0.95rem;
+    line-height: 1.65;
+    font-size: 0.96rem;
+  }
+
+  .proj-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .stack-list, .link-list {
@@ -181,26 +201,37 @@ const projects = [
     margin: 0;
   }
   .stack-list li {
-    font-size: 0.72rem;
-    color: var(--text-mute);
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    background: var(--surface);
-  }
-  .link-list { margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--line); }
-  .link-list a {
-    font-size: 0.82rem;
+    font-size: 0.75rem;
+    font-family: var(--mono);
     color: var(--text-dim);
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    transition: color 0.2s ease, background 0.2s ease;
-  }
-  .link-list a:hover {
-    color: var(--accent);
-    background: var(--accent-tint);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    background: rgba(168, 85, 247, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.15);
   }
 
-  @media (max-width: 720px) {
+  .link-list {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+    gap: 0.6rem;
+  }
+  .link-list a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .link-list a:hover {
+    color: #fff;
+    background: var(--accent-tint-strong);
+    border-color: var(--accent-soft);
+  }
+
+  @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
   }
 </style>
