@@ -3,11 +3,12 @@ const projects = [
   {
     codename: 'E-Fridge',
     badge: 'Featured · Flagship',
-    desc: 'AI-powered virtual food storage app — inventory tracking with expiry monitoring, smart AI recipe suggestions, automated shopping lists, and meal planning.',
+    desc: 'AI-powered virtual food storage app (rewritten & evolved from V-Fridge) — inventory tracking with expiry monitoring, smart AI recipe suggestions, automated shopping lists, and meal planning.',
     stack: ['Go', 'Vue.js', 'PostgreSQL', 'JWT', 'Google OAuth', 'Docker'],
-    status: 'active',
-    statusLabel: 'active dev',
+    status: 'live',
+    statusLabel: 'live app',
     links: [
+      { label: 'Live App', href: 'https://e-fridge.pages.dev' },
       { label: 'Web Repository', href: 'https://github.com/ynshvrh/E-Fridge' },
       { label: 'Backend API', href: 'https://github.com/ynshvrh/E-Fridge-Api' },
     ],
@@ -62,7 +63,7 @@ const projects = [
             <ul class="link-list" aria-label="Links">
               {p.links.map((l) => (
                 <li>
-                  <a href={l.href} target="_blank" rel="noopener noreferrer">
+                  <a href={l.href} target="_blank" rel="noopener noreferrer" class={l.label.includes('Live') ? 'link-live' : ''}>
                     {l.label} <span aria-hidden="true">↗</span>
                   </a>
                 </li>
@@ -163,11 +164,13 @@ const projects = [
     border-radius: 50%;
     background: currentColor;
   }
+  .status-live,
   .status-active {
     color: var(--accent-secondary-soft);
     background: var(--amber-tint);
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    border: 1px solid rgba(245, 158, 11, 0.35);
   }
+  .status-live .status-dot,
   .status-active .status-dot {
     animation: pulse 2s ease-in-out infinite;
   }
@@ -229,6 +232,16 @@ const projects = [
     color: #fff;
     background: var(--accent-tint-strong);
     border-color: var(--accent-soft);
+  }
+  .link-list a.link-live {
+    color: var(--accent-secondary-soft);
+    background: var(--amber-tint);
+    border-color: rgba(245, 158, 11, 0.35);
+  }
+  .link-list a.link-live:hover {
+    color: #ffffff;
+    background: var(--amber-tint-strong);
+    border-color: var(--accent-secondary);
   }
 
   @media (max-width: 768px) {
