@@ -1,258 +1,290 @@
 ---
 const dossier = [
-  { k: 'Role',        v: 'Software Engineer' },
-  { k: 'Backend',     v: 'Go (Golang) · C# (.NET) · TypeScript' },
-  { k: 'Frontend',    v: 'Vue.js · Angular' },
-  { k: 'Databases',   v: 'PostgreSQL · MongoDB · SQLite' },
-  { k: 'Location',    v: 'Kyiv, Ukraine (Open to remote)' },
-  { k: 'Status',      v: 'Open to work' },
+    { k: "Role", v: "Software Engineer" },
+    { k: "Experience", v: "Backend Engineer @ SkyService · Apr–Jun 2026" },
+    { k: "Backend", v: "Go (Golang) · TypeScript (Node.js)" },
+    { k: "Frontend", v: "Vue.js · React · Next.js" },
+    { k: "Databases", v: "PostgreSQL · MongoDB · SQLite" },
+    { k: "Location", v: "Kyiv, Ukraine (Open to remote)" },
+    { k: "Status", v: "Open to work" },
 ];
 
 const vectors = [
-  {
-    tag: 'Go',
-    badgeClass: 'badge-go',
-    status: 'Deepening',
-    desc: 'Concurrency patterns, distributed systems, networking & high-performance applications',
-  },
-  {
-    tag: 'TypeScript',
-    badgeClass: 'badge-ts',
-    status: 'Active',
-    desc: 'Full-stack application development, reactive web interfaces & developer tooling',
-  },
-  {
-    tag: 'Rust',
-    badgeClass: 'badge-rust',
-    status: 'Exploring',
-    desc: 'Systems programming, memory safety, CLI utilities & performance-critical software',
-  },
-  {
-    tag: 'Kotlin',
-    badgeClass: 'badge-kotlin',
-    status: 'Exploring',
-    desc: 'Multiplatform development (KMP), cross-platform logic & expressive modern applications',
-  },
+    {
+        tag: "Go",
+        badgeClass: "badge-go",
+        status: "Deepening",
+        desc: "Concurrency patterns, distributed systems, networking & high-performance applications",
+    },
+    {
+        tag: "TypeScript",
+        badgeClass: "badge-ts",
+        status: "Active",
+        desc: "Full-stack application development, Node.js backends, reactive web interfaces & developer tooling",
+    },
+    {
+        tag: "Rust",
+        badgeClass: "badge-rust",
+        status: "Exploring",
+        desc: "Systems programming, memory safety, embedded Rust, CLI utilities & performance-critical software",
+    },
+    {
+        tag: "Embedded",
+        badgeClass: "badge-embedded",
+        status: "Exploring",
+        desc: "Firmware in C and C++, microcontrollers, low-level hardware interfaces & real-time constraints",
+    },
 ];
 ---
 
 <section id="about" class="section">
-  <div class="container">
-    <h2 class="section-title">About</h2>
+    <div class="container">
+        <h2 class="section-title">About</h2>
 
-    <div class="about-grid">
-      <div class="about-copy">
-        <p>
-          I am a software engineer focused on building robust, scalable backends and reliable APIs. 
-          My primary daily focus is <strong>Go (Golang)</strong> — designing clean microservices, concurrency patterns, 
-          and production-ready REST services.
-        </p>
-        <p>
-          I bring a solid foundation in <strong>C# (.NET 10)</strong>, spanning enterprise Minimal APIs, EF Core, 
-          SignalR real-time messaging, and GraphQL, alongside backend services with <strong>TypeScript</strong>.
-        </p>
-        <p>
-          On the frontend, I comfortably bridge the gap with <strong>Vue.js</strong> and <strong>Angular</strong>, 
-          delivering coherent end-to-end applications.
-        </p>
-      </div>
-
-      <aside class="dossier glowing-card">
-        <div class="card-topline">
-          <span class="dossier-label tag-terminal">// PROFILE_DOSSIER</span>
-        </div>
-        <dl>
-          {dossier.map((row) => (
-            <>
-              <dt>{row.k}</dt>
-              <dd>{row.v}</dd>
-            </>
-          ))}
-        </dl>
-      </aside>
-    </div>
-
-    <!-- Currently Exploring & Future Vectors -->
-    <div class="vectors-box glowing-card">
-      <div class="vectors-head">
-        <div class="terminal-dots" aria-hidden="true">
-          <span class="dot dot-close"></span>
-          <span class="dot dot-minimize"></span>
-          <span class="dot dot-maximize"></span>
-        </div>
-        <span class="vectors-title tag-terminal">~/interests/current-vectors.json</span>
-      </div>
-
-      <div class="vectors-grid">
-        {vectors.map((item) => (
-          <div class="vector-item">
-            <div class="vector-meta">
-              <span class={`vector-tag ${item.badgeClass}`}>{item.tag}</span>
-              <span class="vector-status tag-terminal">{item.status}</span>
+        <div class="about-grid">
+            <div class="about-copy">
+                <p>
+                    I am a software engineer building robust, scalable backends
+                    and reliable APIs. My primary daily stack is{" "}
+                    <strong>Go (Golang)</strong> — designing clean
+                    microservices, concurrency patterns, and production-ready
+                    REST services. At <strong>SkyService</strong> I worked
+                    full-time as a backend engineer, building Go services on
+                    PostgreSQL without ORMs or frameworks, alongside a Vue.js
+                    client.
+                </p>
+                <p>
+                    Alongside Go, I work with <strong>TypeScript</strong> — on
+                    the backend with Node.js, Express and NestJS, and on the
+                    frontend with <strong>Vue.js</strong> and{" "}
+                    <strong>React</strong> (Next.js) — delivering coherent
+                    end-to-end applications.
+                </p>
+                <p>
+                    I'm currently exploring embedded and systems programming in{" "}
+                    <strong>C</strong>, <strong>C++</strong> and{" "}
+                    <strong>Rust</strong>.
+                </p>
             </div>
-            <p class="vector-desc">{item.desc}</p>
-          </div>
-        ))}
-      </div>
+
+            <aside class="dossier glowing-card">
+                <div class="card-topline">
+                    <span class="dossier-label tag-terminal">
+                        // PROFILE_DOSSIER
+                    </span>
+                </div>
+                <dl>
+                    {dossier.map((row) => (
+                        <>
+                            <dt>{row.k}</dt>
+                            <dd>{row.v}</dd>
+                        </>
+                    ))}
+                </dl>
+            </aside>
+        </div>
+
+        <div class="vectors-box glowing-card">
+            <div class="vectors-head">
+                <div class="terminal-dots" aria-hidden="true">
+                    <span class="dot dot-close"></span>
+                    <span class="dot dot-minimize"></span>
+                    <span class="dot dot-maximize"></span>
+                </div>
+                <span class="vectors-title tag-terminal">
+                    ~/interests/current-vectors.json
+                </span>
+            </div>
+
+            <div class="vectors-grid">
+                {vectors.map((item) => (
+                    <div class="vector-item">
+                        <div class="vector-meta">
+                            <span class={`vector-tag ${item.badgeClass}`}>
+                                {item.tag}
+                            </span>
+                            <span class="vector-status tag-terminal">
+                                {item.status}
+                            </span>
+                        </div>
+                        <p class="vector-desc">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <style>
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 1fr;
-    gap: 2.25rem;
-    align-items: start;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 2.25rem;
+        align-items: start;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
 
-  .about-copy p {
-    max-width: 58ch;
-    color: var(--text-dim);
-    line-height: 1.75;
-    margin: 0 0 1.2rem;
-    font-size: 1.02rem;
-  }
-  .about-copy strong {
-    color: var(--text);
-    font-weight: 600;
-  }
+    .about-copy p {
+        max-width: 58ch;
+        color: var(--text-dim);
+        line-height: 1.75;
+        margin: 0 0 1.2rem;
+        font-size: 1.02rem;
+    }
+    .about-copy strong {
+        color: var(--text);
+        font-weight: 600;
+    }
 
-  .dossier {
-    border-radius: 16px;
-    padding: 1.5rem 1.75rem;
-    box-shadow: var(--card-shadow);
-  }
-  .card-topline {
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .dossier-label {
-    font-size: 0.72rem;
-    color: var(--accent-secondary-soft);
-    font-weight: 600;
-  }
-  .dossier dl {
-    margin: 0;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    column-gap: 1.5rem;
-    row-gap: 0.85rem;
-  }
-  .dossier dt {
-    color: var(--text-mute);
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding-top: 0.1rem;
-  }
-  .dossier dd {
-    margin: 0;
-    color: var(--text);
-    font-size: 0.92rem;
-    font-weight: 500;
-  }
+    .dossier {
+        border-radius: 16px;
+        padding: 1.5rem 1.75rem;
+        box-shadow: var(--card-shadow);
+    }
+    .card-topline {
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--line);
+    }
+    .dossier-label {
+        font-size: 0.72rem;
+        color: var(--accent-secondary-soft);
+        font-weight: 600;
+    }
+    .dossier dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 1.5rem;
+        row-gap: 0.85rem;
+    }
+    .dossier dt {
+        color: var(--text-mute);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding-top: 0.1rem;
+    }
+    .dossier dd {
+        margin: 0;
+        color: var(--text);
+        font-size: 0.92rem;
+        font-weight: 500;
+    }
 
-  /* Vectors Terminal Box */
-  .vectors-box {
-    border-radius: 16px;
-    padding: 1.35rem 1.6rem;
-    box-shadow: var(--card-shadow);
-    margin-top: 1rem;
-  }
-  .vectors-head {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1.25rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .terminal-dots {
-    display: flex;
-    gap: 0.4rem;
-  }
-  .terminal-dots .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-  .dot-close { background: #ef4444; opacity: 0.8; }
-  .dot-minimize { background: #f59e0b; opacity: 0.8; }
-  .dot-maximize { background: #10b981; opacity: 0.8; }
+    .vectors-box {
+        border-radius: 16px;
+        padding: 1.35rem 1.6rem;
+        box-shadow: var(--card-shadow);
+        margin-top: 1rem;
+    }
+    .vectors-head {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1.25rem;
+        border-bottom: 1px solid var(--line);
+    }
+    .terminal-dots {
+        display: flex;
+        gap: 0.4rem;
+    }
+    .terminal-dots .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .dot-close {
+        background: #ef4444;
+        opacity: 0.8;
+    }
+    .dot-minimize {
+        background: #f59e0b;
+        opacity: 0.8;
+    }
+    .dot-maximize {
+        background: #10b981;
+        opacity: 0.8;
+    }
 
-  .vectors-title {
-    color: var(--text-mute);
-    font-size: 0.8rem;
-  }
+    .vectors-title {
+        color: var(--text-mute);
+        font-size: 0.8rem;
+    }
 
-  .vectors-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-  .vector-item {
-    background: rgba(168, 85, 247, 0.03);
-    border: 1px solid rgba(168, 85, 247, 0.12);
-    border-radius: 12px;
-    padding: 1rem 1.15rem;
-    transition: border-color 0.2s ease, background 0.2s ease;
-  }
-  .vector-item:hover {
-    background: rgba(168, 85, 247, 0.07);
-    border-color: rgba(168, 85, 247, 0.3);
-  }
-  .vector-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.45rem;
-  }
-  .vector-tag {
-    font-size: 0.85rem;
-    font-weight: 700;
-    font-family: var(--mono);
-    padding: 0.15rem 0.55rem;
-    border-radius: 6px;
-  }
-  .badge-go {
-    color: #00add8;
-    background: rgba(0, 173, 216, 0.12);
-    border: 1px solid rgba(0, 173, 216, 0.3);
-  }
-  .badge-ts {
-    color: #3178c6;
-    background: rgba(49, 120, 198, 0.12);
-    border: 1px solid rgba(49, 120, 198, 0.3);
-  }
-  .badge-rust {
-    color: #f59e0b;
-    background: rgba(245, 158, 11, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-  }
-  .badge-kotlin {
-    color: #c084fc;
-    background: rgba(192, 132, 252, 0.12);
-    border: 1px solid rgba(192, 132, 252, 0.3);
-  }
+    .vectors-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+    .vector-item {
+        background: rgba(168, 85, 247, 0.03);
+        border: 1px solid rgba(168, 85, 247, 0.12);
+        border-radius: 12px;
+        padding: 1rem 1.15rem;
+        transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+    }
+    .vector-item:hover {
+        background: rgba(168, 85, 247, 0.07);
+        border-color: rgba(168, 85, 247, 0.3);
+    }
+    .vector-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.45rem;
+    }
+    .vector-tag {
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-family: var(--mono);
+        padding: 0.15rem 0.55rem;
+        border-radius: 6px;
+    }
+    .badge-go {
+        color: #00add8;
+        background: rgba(0, 173, 216, 0.12);
+        border: 1px solid rgba(0, 173, 216, 0.3);
+    }
+    .badge-ts {
+        color: #3178c6;
+        background: rgba(49, 120, 198, 0.12);
+        border: 1px solid rgba(49, 120, 198, 0.3);
+    }
+    .badge-rust {
+        color: #f59e0b;
+        background: rgba(245, 158, 11, 0.12);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .badge-embedded {
+        color: #c084fc;
+        background: rgba(192, 132, 252, 0.12);
+        border: 1px solid rgba(192, 132, 252, 0.3);
+    }
 
-  .vector-status {
-    color: var(--text-mute);
-    font-size: 0.72rem;
-  }
-  .vector-desc {
-    font-size: 0.86rem;
-    color: var(--text-dim);
-    margin: 0;
-    line-height: 1.5;
-  }
+    .vector-status {
+        color: var(--text-mute);
+        font-size: 0.72rem;
+    }
+    .vector-desc {
+        font-size: 0.86rem;
+        color: var(--text-dim);
+        margin: 0;
+        line-height: 1.5;
+    }
 
-  @media (max-width: 820px) {
-    .about-grid { grid-template-columns: 1fr; gap: 1.75rem; }
-    .vectors-grid { grid-template-columns: 1fr; }
-  }
+    @media (max-width: 820px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 1.75rem;
+        }
+        .vectors-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
